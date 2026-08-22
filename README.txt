@@ -1,15 +1,14 @@
-DIENSTPLAN V8 – MONATSFOKUS
+DIENSTPLAN V10 – EINFACHE INSTALLATION
 
-Neu:
-- überflüssigen Reiter „Anzeigen“ entfernt
-- beim Öffnen sofort aktuelle Monatsübersicht
-- Kalender deutlich weiter oben, weniger Scrollen
-- „Als App nutzen“ im Safari/Browser-Modus deutlich sichtbarer
-- nach Installation verschwindet „Als App nutzen“ automatisch
-- „Dienstplan verschicken“ jetzt oben im Kopfbereich
-- vorhandene Teilen-Funktion bleibt erhalten
-- Agenda bleibt kompakt
-- Ferdi-Signatur bleibt erhalten
+Browser:
+- Dienstplan ist erst nach Installation nutzbar
+- iPhone: visuelle 3-Schritt-Anleitung mit echten Safari-Bildern
+  1. Teilen
+  2. Zum Home-Bildschirm
+  3. Hinzufügen
+- Android: stark vereinfachte Anleitung + Installationsbutton, wenn verfügbar
 
-GitHub:
-Alle Dateien hochladen und vorhandene Dateien ersetzen.
+Installierte App:
+- Installationsanleitung verschwindet
+- Dienstplan startet direkt als App
+- bisherige Kalender-, Agenda- und Teilen-Funktionen bleiben erhalten

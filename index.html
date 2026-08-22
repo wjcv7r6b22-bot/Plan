@@ -13,6 +13,59 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+  <section id="installGate" class="install-gate" hidden>
+    <div class="install-gate-card">
+      <div class="install-logo">D</div>
+      <h1>Dienstplan</h1>
+      <p class="install-lead">Diese Anwendung ist für die Nutzung vom Home-Bildschirm vorgesehen.</p>
+
+      
+      <div id="iosInstallGuide" class="platform-guide visual-guide" hidden>
+        <h2>📱 Auf dem iPhone installieren</h2>
+        <p class="visual-intro">Nur 3 Schritte – danach öffnest du den Dienstplan wie eine normale App.</p>
+
+        <div class="install-step">
+          <div class="step-number">1</div>
+          <div class="step-copy"><b>⬆️ Teilen antippen</b><span>Unten in Safari auf das Teilen-Symbol tippen.</span></div>
+          <img src="iphone-schritt-1-teilen.jpeg" alt="Safari Teilen-Symbol">
+        </div>
+
+        <div class="install-step">
+          <div class="step-number">2</div>
+          <div class="step-copy"><b>➕ „Zum Home-Bildschirm“</b><span>Im Menü nach unten gehen und diesen Punkt auswählen.</span></div>
+          <img src="iphone-schritt-2-home.jpeg" alt="Zum Home-Bildschirm auswählen">
+        </div>
+
+        <div class="install-step">
+          <div class="step-number">3</div>
+          <div class="step-copy"><b>✅ „Hinzufügen“</b><span>Oben rechts auf den blauen Button tippen.</span></div>
+          <img src="iphone-schritt-3-hinzufuegen.jpeg" alt="Hinzufügen antippen">
+        </div>
+
+        <div class="done-box">🎉 <b>Fertig!</b> Jetzt auf dem Home-Bildschirm das blaue <b>D</b> öffnen.</div>
+      </div>
+
+      
+      <div id="androidInstallGuide" class="platform-guide visual-guide" hidden>
+        <h2>🤖 Auf Android installieren</h2>
+        <p class="visual-intro">Nur wenige Schritte – danach öffnest du den Dienstplan wie eine normale App.</p>
+        <div class="android-simple-step"><b>1️⃣ In Chrome öffnen</b><span>Diese Seite mit Google Chrome öffnen.</span></div>
+        <div class="android-simple-step"><b>2️⃣ App installieren</b><span>Auf „App installieren“ tippen. Falls der Button fehlt: oben rechts auf <b>⋮</b> → „Zum Startbildschirm hinzufügen“.</span></div>
+        <button id="directInstallBtn" class="direct-install-btn" hidden>📲 App installieren</button>
+        <div class="done-box">🎉 <b>Fertig!</b> Danach den Dienstplan über das <b>D</b>-Symbol öffnen.</div>
+      </div>
+
+      <div id="genericInstallGuide" class="platform-guide" hidden>
+        <h2>Als App installieren</h2>
+        <p>Öffne diese Seite auf deinem Smartphone und füge sie über den Browser zum Home-Bildschirm hinzu.</p>
+      </div>
+
+      <p class="privacy-note">Nach der Installation öffnet sich der Dienstplan direkt als App. Die Browser-Version zeigt bewusst nur diese Installationsanleitung.</p>
+      <div class="ferdi-gate">Ferdi</div>
+    </div>
+  </section>
+
   <header class="app-header">
     <div>
       <h1>Dienstplan</h1>
@@ -31,17 +84,8 @@
       <button class="tab active" data-view="year">Jahr</button>
       <button class="tab" data-view="month">Monat</button>
       <button class="tab" data-view="mine">Übersicht</button>
-      <button id="installTab" class="tab" data-view="install">Als App nutzen</button>
+      
     </nav>
-
-    <div id="installBanner" class="install-banner" hidden>
-      <div>
-        <b>Als App nutzen</b>
-        <span>Zum Home-Bildschirm hinzufügen</span>
-      </div>
-      <button id="installBannerBtn">So geht’s</button>
-    </div>
-
 
     <section class="toolbar card">
       <label>Meine Gruppe
@@ -57,12 +101,12 @@
       <label>Datum suchen
         <input id="dateSearch" type="date" />
       </label>
-      
+      <button id="goDate">Anzeigen</button>
       <button id="todayBtn">Heute</button>
-      
+      <button id="sharePlanBtn">Dienstplan verschicken</button>
     </section>
 
-    <section id="summary" class="summary-compact" class="summary card" aria-live="polite"></section>
+    <section id="summary" class="summary card" aria-live="polite"></section>
 
     
     <div id="shiftAgenda" class="shift-agenda" aria-label="Dienstlegende">
