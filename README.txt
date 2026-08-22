@@ -20,3 +20,9 @@ NEU:
 GitHub Pages:
 Die sechs Dateien aus diesem Ordner in dein bestehendes Repository hochladen und die vorhandenen Dateien ersetzen.
 Die GitHub-Pages-Adresse bleibt gleich.
+
+
+ÄNDERUNG:
+- In der Einzelgruppenansicht werden keine Uhrzeiten mehr angezeigt.
+- Es steht nur noch Frühdienst, Spätdienst oder Nachtdienst.
+- A: -, A: X und A: FB bleiben unverändert.
