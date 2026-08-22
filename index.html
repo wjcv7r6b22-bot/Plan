@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#173b63" />
+  <title>Dienstplan</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <h1>Dienstplan</h1>
+      <div class="subtitle">Dienstgruppen A–E</div>
+    </div>
+    <div class="year-controls" aria-label="Jahr auswählen">
+      <button id="prevYear" class="icon-btn" aria-label="Vorheriges Jahr">‹</button>
+      <select id="yearSelect" aria-label="Jahr"></select>
+      <button id="nextYear" class="icon-btn" aria-label="Nächstes Jahr">›</button>
+    </div>
+  </header>
+
+  <main>
+    <nav class="tabs" aria-label="Ansicht">
+      <button class="tab active" data-view="year">Jahr</button>
+      <button class="tab" data-view="month">Monat</button>
+      <button class="tab" data-view="mine">Mein Dienst</button>
+    </nav>
+
+    <section class="toolbar card">
+      <label>Meine Gruppe
+        <select id="groupSelect">
+          <option>A</option><option selected>B</option><option>C</option><option>D</option><option>E</option>
+        </select>
+      </label>
+      <label>Datum suchen
+        <input id="dateSearch" type="date" />
+      </label>
+      <button id="goDate">Anzeigen</button>
+      <button id="todayBtn">Heute</button>
+      <button id="printBtn">Drucken / PDF</button>
+    </section>
+
+    <section id="summary" class="summary card" aria-live="polite"></section>
+
+    <section id="yearView" class="view active">
+      <div id="calendar" class="calendar"></div>
+    </section>
+
+    <section id="monthView" class="view">
+      <div class="month-nav card">
+        <button id="prevMonth" class="icon-btn">‹</button>
+        <h2 id="monthTitle"></h2>
+        <button id="nextMonth" class="icon-btn">›</button>
+      </div>
+      <div id="monthCalendar" class="month-large"></div>
+    </section>
+
+    <section id="mineView" class="view">
+      <div class="card mine-header">
+        <h2 id="mineTitle">Dienstgruppe B</h2>
+        <p>Deine Dienste und freien Tage im gewählten Jahr.</p>
+      </div>
+      <div id="mineList" class="mine-list"></div>
+    </section>
+  </main>
+
+  <div id="dayModal" class="modal" hidden>
+    <div class="modal-card">
+      <button id="closeModal" class="modal-close" aria-label="Schließen">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
