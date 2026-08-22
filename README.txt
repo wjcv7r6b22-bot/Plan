@@ -1,27 +1,21 @@
-DIENSTPLAN APP V3 – GITHUB PAGES
+DIENSTPLAN APP V2
 
-Diese Dateien direkt in das Hauptverzeichnis deines GitHub-Repositories hochladen.
-Vorhandene Dateien mit gleichem Namen ersetzen.
+Start:
+1. ZIP entpacken.
+2. index.html öffnen.
 
-Enthalten:
-- Heute-Startseite
-- Dienstgruppe B voreingestellt, A–E wählbar
-- Jahres- und Monatsansicht
-- Mein-Dienst-Liste mit Filtern
-- Früh / Spät / Nacht in korrekter Reihenfolge
-- Strichfrei als "A: -"
-- X-Frei als rotes "A: X"
-- FB
-- NRW-Feiertage
-- persönliche Einträge (nur auf dem Gerät)
-- Export / Import der persönlichen Einträge
-- .ics-Kalenderexport für die ausgewählte Dienstgruppe
-- Offline-Nutzung als PWA
-- iPhone-Homescreen-Symbol
-- Hell/Dunkel-Modus
-- App-Link teilen
-- Drucken / PDF
+Funktionen:
+- Jahresansicht
+- große Monatsansicht
+- „Mein Dienst“-Ansicht für A–E, voreingestellt B
+- Datumssuche
+- Tagesdetails per Klick
+- A: - = Strichfrei / Einspringen möglich
+- A: X = definitiv frei (rot)
+- A: FB = Fortbildung
+- Arbeitende Gruppen immer nach Früh -> Spät -> Nacht
+- Druck/PDF
+- PWA-Grundlage (manifest + service worker)
 
-WICHTIG:
-Zuverlässige zeitgesteuerte Push-Benachrichtigungen sind mit einer rein statischen GitHub-Pages-App
-ohne zusätzlichen Push-/Serverdienst nicht sinnvoll umsetzbar. Alle übrigen Funktionen laufen statisch.
+Hinweis:
+Für Installation wie eine App sollte der Ordner über HTTPS bereitgestellt werden (z. B. GitHub Pages, Netlify oder Vercel). Danach kann die Seite auf dem Smartphone zum Startbildschirm hinzugefügt werden.
