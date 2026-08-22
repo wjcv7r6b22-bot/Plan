@@ -1,16 +1,18 @@
-DIENSTPLAN – EINFACH & EDEL
+DIENSTPLAN V7 – DAUERHAFTE AGENDA
 
-Diese Version basiert auf der Version mit „Als App nutzen“.
-
-Ziel:
-- so wenig Bedienung wie möglich
-- ruhige, hochwertige Optik
-- aktuelle Monatsansicht im Mittelpunkt
-- Gesamtansicht und Einzelgruppe bleiben erhalten
-- Reiter „Als App nutzen“ bleibt erhalten und verschwindet im installierten App-Modus
-- heutiger Tag wird gelb hervorgehoben
-- klare, große Touch-Flächen
-- reduzierte visuelle Unruhe
+Neu:
+- kompakte Dienst-Agenda in der App
+- sichtbar bei Gesamtansicht und einzelnen Dienstgruppen
+- sichtbar bei Monats- und Jahresansicht
+- direkt beim Kalender, damit der Kalender weiterhin im Fokus bleibt
+- F Früh 06–14
+- S Spät 14–22
+- N Nacht 22–06
+- FB Fortbildung
+- – Einspringen möglich
+- X gesichertes Frei
+- Farben entsprechen dem Kalender
+- Kurzübersicht bleibt auch in verschickten Dienstplanbildern erhalten
 
 GitHub:
-Alle enthaltenen Dateien hochladen und vorhandene Dateien ersetzen.
+Alle Dateien aus der ZIP hochladen und vorhandene Dateien ersetzen.

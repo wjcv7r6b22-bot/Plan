@@ -297,3 +297,65 @@ body{
 
 /* App mode: no install tab is already handled by JS.
    Keep the interface visually quiet and focused. */
+
+/* ===== Dienstplan verschicken ===== */
+.share-modal-card{max-width:560px}
+.share-help{color:#6f7780;line-height:1.45;margin:0 0 14px}
+.share-form{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.share-form label{display:grid;gap:5px;font-size:.82rem;font-weight:800;color:#5e6872}
+.share-form label:last-child{grid-column:1/-1}
+.share-form select{
+  width:100%;
+  min-height:46px;
+  border:1px solid #d4dde5;
+  border-radius:11px;
+  padding:0 10px;
+  background:#fff;
+}
+.share-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.share-actions button{
+  min-height:46px;border:1px solid #d4dde5;border-radius:11px;
+  background:#fff;color:#173b63;font-weight:850;
+}
+.share-actions .primary-share{background:#173b63;color:#fff;border-color:#173b63}
+.share-status{min-height:20px;margin-top:10px;color:#66717c;font-size:.84rem;text-align:center}
+@media(max-width:560px){
+  .share-form{grid-template-columns:1fr}
+  .share-form label:last-child{grid-column:auto}
+  .share-actions{grid-template-columns:1fr}
+}
+
+/* V6: Die Kurzübersicht wird bewusst nur in das verschickte/gespeicherte
+   Dienstplanbild eingebaut, damit die App-Oberfläche weiterhin ruhig bleibt. */
+
+/* ===== V7: dauerhafte kompakte Dienst-Agenda ===== */
+.shift-agenda{
+  margin:8px auto 10px;
+  max-width:1100px;
+  padding:7px 12px;
+  border:1px solid #e3e9ef;
+  border-radius:12px;
+  background:rgba(255,255,255,.92);
+  color:#5f6872;
+  font-size:.76rem;
+  line-height:1.45;
+  text-align:center;
+  box-shadow:0 3px 12px rgba(16,42,67,.04);
+}
+.shift-agenda div{white-space:normal}
+.shift-agenda b{font-weight:900}
+.ag-f{color:#2f7342}
+.ag-s{color:#9a5b00}
+.ag-n,.ag-fb{color:#315e8a}
+.ag-free{color:#666}
+.ag-x{color:#c62828}
+
+@media(max-width:760px){
+  .shift-agenda{
+    margin:5px 8px 7px;
+    padding:5px 7px;
+    border-radius:9px;
+    font-size:.64rem;
+    line-height:1.35;
+  }
+}

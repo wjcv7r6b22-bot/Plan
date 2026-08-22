@@ -9,6 +9,7 @@
   <meta name="apple-mobile-web-app-title" content="Dienstplan" />
   <title>Dienstplan</title>
   <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-180.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -49,12 +50,17 @@
       </label>
       <button id="goDate">Anzeigen</button>
       <button id="todayBtn">Heute</button>
-      <button id="printBtn">Drucken / PDF</button>
+      <button id="sharePlanBtn">Dienstplan verschicken</button>
     </section>
 
     <section id="summary" class="summary card" aria-live="polite"></section>
 
-    <section id="yearView" class="view active">
+    
+    <div id="shiftAgenda" class="shift-agenda" aria-label="Dienstlegende">
+      <div><b class="ag-f">F</b> Früh 06–14 · <b class="ag-s">S</b> Spät 14–22 · <b class="ag-n">N</b> Nacht 22–06</div>
+      <div><b class="ag-fb">FB</b> Fortbildung · <b class="ag-free">–</b> Einspringen möglich · <b class="ag-x">X</b> gesichertes Frei</div>
+    </div>
+<section id="yearView" class="view active">
       <div id="calendar" class="calendar"></div>
     </section>
 
@@ -108,6 +114,40 @@
     </section>
 
   </main>
+
+
+  <div id="shareModal" class="modal" hidden>
+    <div class="modal-card share-modal-card">
+      <button id="closeShareModal" class="modal-close" aria-label="Schließen">×</button>
+      <h2>Dienstplan verschicken</h2>
+      <p class="share-help">Monat und Dienstgruppe auswählen. Danach kannst du den Plan als Bild direkt über WhatsApp, Nachrichten, Mail oder andere Apps teilen.</p>
+
+      <div class="share-form">
+        <label>Jahr
+          <select id="shareYear"></select>
+        </label>
+        <label>Monat
+          <select id="shareMonth"></select>
+        </label>
+        <label>Dienstgruppe
+          <select id="shareGroup">
+            <option value="ALL">Alle Dienstgruppen</option>
+            <option value="A">Dienstgruppe A</option>
+            <option value="B">Dienstgruppe B</option>
+            <option value="C">Dienstgruppe C</option>
+            <option value="D">Dienstgruppe D</option>
+            <option value="E">Dienstgruppe E</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="share-actions">
+        <button id="shareImageBtn" class="primary-share">Plan teilen</button>
+        <button id="saveImageBtn">Bild speichern</button>
+      </div>
+      <div id="shareStatus" class="share-status" aria-live="polite"></div>
+    </div>
+  </div>
 
   <div id="dayModal" class="modal" hidden>
     <div class="modal-card">

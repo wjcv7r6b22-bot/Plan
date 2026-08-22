@@ -208,7 +208,7 @@ $("goDate").onclick=()=>{
   setTimeout(()=>document.querySelector(`[data-date="${iso(d)}"]`)?.scrollIntoView({behavior:"smooth",block:"center"}),50);
   openDay(d);
 };
-$("printBtn").onclick=()=>window.print();
+
 $("closeModal").onclick=()=>$("dayModal").hidden=true;
 $("dayModal").onclick=e=>{if(e.target===$("dayModal"))$("dayModal").hidden=true;};
 document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>showView(t.dataset.view));
@@ -266,3 +266,187 @@ function openCurrentDayOnStart(){
   },60);
 }
 window.addEventListener("load",openCurrentDayOnStart);
+
+
+// ===== Dienstplan als Bild teilen =====
+function shareCanvasForMonth(year, month, group){
+  const W=1800, H=2050;
+  const canvas=document.createElement("canvas");
+  canvas.width=W; canvas.height=H;
+  const ctx=canvas.getContext("2d");
+
+  const navy="#173b63", pale="#d9eaf7", line="#cbd5df", red="#c62828",
+        blue="#315e8a", gray="#666666", green="#2f7342", orange="#9a5b00";
+
+  ctx.fillStyle="#ffffff"; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle=navy; ctx.fillRect(0,0,W,170);
+
+  ctx.fillStyle="#ffffff";
+  ctx.font="bold 72px system-ui,-apple-system,sans-serif";
+  ctx.fillText("Dienstplan",70,105);
+  ctx.font="34px system-ui,-apple-system,sans-serif";
+  ctx.fillText(group==="ALL" ? "Alle Dienstgruppen" : `Dienstgruppe ${group}`,70,150);
+
+  ctx.fillStyle=pale; ctx.fillRect(55,205,W-110,105);
+  ctx.fillStyle=navy; ctx.textAlign="center";
+  ctx.font="bold 54px system-ui,-apple-system,sans-serif";
+  ctx.fillText(`${monthNames[month]} ${year}`,W/2,275);
+
+  const gridX=55, gridY=330, gridW=W-110, headerH=72, rows=6, cols=7;
+  const cellW=gridW/cols, cellH=(H-gridY-245-headerH)/rows;
+
+  const wds=["Mo","Di","Mi","Do","Fr","Sa","So"];
+  ctx.fillStyle="#eef2f5"; ctx.fillRect(gridX,gridY,gridW,headerH);
+  ctx.fillStyle="#222"; ctx.font="bold 31px system-ui,-apple-system,sans-serif";
+  wds.forEach((w,i)=>ctx.fillText(w,gridX+i*cellW+cellW/2,gridY+47));
+
+  const first=new Date(year,month,1,12);
+  const count=new Date(year,month+1,0,12).getDate();
+  const start=mondayIndex(first.getDay());
+
+  ctx.textAlign="left";
+  for(let slot=0;slot<rows*cols;slot++){
+    const r=Math.floor(slot/7), c=slot%7;
+    const x=gridX+c*cellW, y=gridY+headerH+r*cellH;
+    ctx.fillStyle=c>=5?"#fbfbfc":"#fff"; ctx.fillRect(x,y,cellW,cellH);
+    ctx.strokeStyle=line; ctx.lineWidth=2; ctx.strokeRect(x,y,cellW,cellH);
+
+    const day=slot-start+1;
+    if(day<1||day>count) continue;
+    const d=new Date(year,month,day,12);
+    ctx.fillStyle="#1c1c1c"; ctx.font="bold 32px system-ui,-apple-system,sans-serif";
+    ctx.fillText(String(day),x+12,y+38);
+
+    if(group==="ALL"){
+      const p=dayParts(d);
+      ctx.textAlign="center";
+      ctx.fillStyle="#111"; ctx.font="bold 38px system-ui,-apple-system,sans-serif";
+      ctx.fillText(p.work.join(" "),x+cellW/2,y+88);
+
+      let yy=y+126;
+      if(p.dash.length){
+        ctx.fillStyle=gray; ctx.font="bold 23px system-ui,-apple-system,sans-serif";
+        ctx.fillText(p.dash.map(g=>`${g}: -`).join("  "),x+cellW/2,yy); yy+=34;
+      }
+      if(p.x.length){
+        ctx.fillStyle=red; ctx.font="bold 23px system-ui,-apple-system,sans-serif";
+        ctx.fillText(p.x.map(g=>`${g}: X`).join("  "),x+cellW/2,yy); yy+=34;
+      }
+      if(p.fb.length){
+        ctx.fillStyle=blue; ctx.font="bold 23px system-ui,-apple-system,sans-serif";
+        ctx.fillText(p.fb.map(g=>`${g}: FB`).join("  "),x+cellW/2,yy);
+      }
+      ctx.textAlign="left";
+    }else{
+      const s=duty(group,d);
+      ctx.textAlign="center";
+      ctx.font="bold 52px system-ui,-apple-system,sans-serif";
+      if(s==="F"){ctx.fillStyle=green;ctx.fillText("F",x+cellW/2,y+112)}
+      else if(s==="S"){ctx.fillStyle=orange;ctx.fillText("S",x+cellW/2,y+112)}
+      else if(s==="N"){ctx.fillStyle=blue;ctx.fillText("N",x+cellW/2,y+112)}
+      else if(s==="X"){ctx.fillStyle=red;ctx.fillText("X",x+cellW/2,y+112)}
+      else if(s==="-"){ctx.fillStyle=gray;ctx.fillText("-",x+cellW/2,y+112)}
+      else if(s==="FB"){ctx.fillStyle=blue;ctx.font="bold 42px system-ui,-apple-system,sans-serif";ctx.fillText("FB",x+cellW/2,y+112)}
+      ctx.textAlign="left";
+    }
+  }
+
+  ctx.fillStyle="#7b858f";
+  ctx.textAlign="center";
+  ctx.font="24px system-ui,-apple-system,sans-serif";
+  
+  // Kompakte Erklärung für Empfänger des verschickten Plans
+  const legendY=H-60;
+  ctx.fillStyle="#f4f7fa";
+  ctx.fillRect(55, legendY-150, W-110, 125);
+  ctx.strokeStyle="#d9e1e8";
+  ctx.lineWidth=2;
+  ctx.strokeRect(55, legendY-150, W-110, 125);
+
+  ctx.textAlign="left";
+  ctx.fillStyle="#173b63";
+  ctx.font="bold 24px system-ui,-apple-system,sans-serif";
+  ctx.fillText("Kurzübersicht",75,legendY-116);
+
+  ctx.font="21px system-ui,-apple-system,sans-serif";
+  ctx.fillStyle="#37424d";
+  ctx.fillText("F = Frühdienst 06:00–14:00   ·   S = Spätdienst 14:00–22:00   ·   N = Nachtdienst 22:00–06:00",75,legendY-78);
+  ctx.fillText("FB = Fortbildung   ·   – = frei / Einspringen möglich   ·   X = gesichertes Frei",75,legendY-42);
+
+  ctx.fillStyle="#7b858f";
+  ctx.textAlign="center";
+  ctx.font="20px system-ui,-apple-system,sans-serif";
+  ctx.fillText("Dienstplan",W/2,H-10);
+  return canvas;
+}
+
+function canvasBlob(canvas){
+  return new Promise(resolve=>canvas.toBlob(resolve,"image/png",1));
+}
+
+async function createShareFile(){
+  const year=Number($("shareYear").value);
+  const month=Number($("shareMonth").value);
+  const group=$("shareGroup").value;
+  const canvas=shareCanvasForMonth(year,month,group);
+  const blob=await canvasBlob(canvas);
+  const label=group==="ALL"?"Alle_Dienstgruppen":`Dienstgruppe_${group}`;
+  return new File([blob],`Dienstplan_${year}_${String(month+1).padStart(2,"0")}_${label}.png`,{type:"image/png"});
+}
+
+function setupSharePlan(){
+  const yearSel=$("shareYear"), monthSel=$("shareMonth");
+  if(!yearSel || yearSel.options.length) return;
+  for(let y=2020;y<=2055;y++){
+    const o=document.createElement("option");o.value=y;o.textContent=y;yearSel.appendChild(o);
+  }
+  monthNames.forEach((m,i)=>{
+    const o=document.createElement("option");o.value=i;o.textContent=m;monthSel.appendChild(o);
+  });
+}
+
+$("sharePlanBtn").onclick=()=>{
+  setupSharePlan();
+  $("shareYear").value=currentYear;
+  $("shareMonth").value=currentMonth;
+  $("shareGroup").value=selectedGroup;
+  $("shareStatus").textContent="";
+  $("shareModal").hidden=false;
+};
+
+$("closeShareModal").onclick=()=>{$("shareModal").hidden=true};
+$("shareModal").onclick=e=>{if(e.target===$("shareModal"))$("shareModal").hidden=true};
+
+$("shareImageBtn").onclick=async()=>{
+  const status=$("shareStatus");
+  try{
+    status.textContent="Bild wird erstellt …";
+    const file=await createShareFile();
+    const year=$("shareYear").value, month=Number($("shareMonth").value), group=$("shareGroup").value;
+    const title=`Dienstplan ${monthNames[month]} ${year}`;
+    const text=group==="ALL"?"Dienstplan – alle Dienstgruppen":`Dienstplan – Dienstgruppe ${group}`;
+
+    if(navigator.canShare && navigator.canShare({files:[file]})){
+      await navigator.share({title,text,files:[file]});
+      status.textContent="";
+    }else if(navigator.share){
+      await navigator.share({title,text,url:location.href});
+      status.textContent="Dein Browser kann das Bild nicht direkt teilen. Nutze „Bild speichern“.";
+    }else{
+      status.textContent="Teilen wird hier nicht unterstützt. Nutze „Bild speichern“.";
+    }
+  }catch(err){
+    if(err?.name!=="AbortError") status.textContent="Teilen war nicht möglich. Nutze „Bild speichern“.";
+    else status.textContent="";
+  }
+};
+
+$("saveImageBtn").onclick=async()=>{
+  const status=$("shareStatus");
+  status.textContent="Bild wird erstellt …";
+  const file=await createShareFile();
+  const url=URL.createObjectURL(file);
+  const a=document.createElement("a");a.href=url;a.download=file.name;document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+  status.textContent="Bild wurde erstellt.";
+};
