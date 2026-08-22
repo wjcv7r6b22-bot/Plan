@@ -1,13 +1,1 @@
-const CACHE="dienstplan-v10-simple-install-1";
-const FILES=["./icon-180.png","./icon-192.png","./icon-512.png","./iphone-anleitung.png","./android-anleitung.png","./","./index.html","./styles.css","./app.js","./manifest.webmanifest",
-  "./iphone-schritt-1-teilen.jpeg",
-  "./iphone-schritt-2-home.jpeg",
-  "./iphone-schritt-3-hinzufuegen.jpeg"];
-self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting())));
-self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
-self.addEventListener("fetch",e=>{
-  if(e.request.method!=="GET")return;
-  e.respondWith(fetch(e.request).then(r=>{
-    const copy=r.clone();caches.open(CACHE).then(c=>c.put(e.request,copy));return r;
-  }).catch(()=>caches.match(e.request).then(r=>r||caches.match("./index.html"))));
-});
+const CACHE="dienstplan-v11-20260822b";const FILES=["./","./index.html","./styles.css","./app.js","./manifest.webmanifest","./icon-180.png","./icon-192.png","./icon-512.png","./iphone-schritt-1-teilen.jpeg","./iphone-schritt-2-home.jpeg","./iphone-schritt-3-hinzufuegen.jpeg"];self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting())));self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));self.addEventListener("fetch",e=>{if(e.request.method!=="GET")return;e.respondWith(fetch(e.request,{cache:"no-store"}).then(r=>{let x=r.clone();caches.open(CACHE).then(c=>c.put(e.request,x));return r}).catch(()=>caches.match(e.request).then(r=>r||caches.match("./index.html"))))});

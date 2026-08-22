@@ -452,79 +452,47 @@ $("saveImageBtn").onclick=async()=>{
 };
 
 
-// ===== V9: Installationspflicht im Browser =====
-let deferredInstallPromptV9 = null;
-
-function isInstalledPWA(){
-  return window.matchMedia("(display-mode: standalone)").matches ||
-         window.matchMedia("(display-mode: fullscreen)").matches ||
-         window.navigator.standalone === true;
+// ===== V11 install gate + PDF range =====
+let deferredInstallPromptV11=null;
+function installedV11(){return matchMedia("(display-mode: standalone)").matches||matchMedia("(display-mode: fullscreen)").matches||navigator.standalone===true}
+function applyInstallV11(){
+ const installed=installedV11();document.body.classList.toggle("installed-app",installed);document.body.classList.toggle("browser-install-only",!installed);
+ const g=$("installGate");if(g)g.hidden=installed;
+ if(!installed){const ua=navigator.userAgent||"",ios=/iPhone|iPad|iPod/i.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1),android=/Android/i.test(ua);$("iosInstallGuide").hidden=!ios;$("androidInstallGuide").hidden=!android;$("genericInstallGuide").hidden=ios||android}
 }
-
-function detectMobilePlatform(){
-  const ua=navigator.userAgent||"";
-  const isiOS=/iPhone|iPad|iPod/i.test(ua) ||
-              (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1);
-  const isAndroid=/Android/i.test(ua);
-  return {isiOS,isAndroid};
-}
-
-function applyInstallGate(){
-  const installed=isInstalledPWA();
-  document.body.classList.toggle("installed-app",installed);
-  document.body.classList.toggle("browser-install-only",!installed);
-
-  const gate=document.getElementById("installGate");
-  if(gate) gate.hidden=installed;
-
-  if(!installed){
-    const {isiOS,isAndroid}=detectMobilePlatform();
-    const ios=document.getElementById("iosInstallGuide");
-    const android=document.getElementById("androidInstallGuide");
-    const generic=document.getElementById("genericInstallGuide");
-    if(ios) ios.hidden=!isiOS;
-    if(android) android.hidden=!isAndroid;
-    if(generic) generic.hidden=isiOS||isAndroid;
-  }
-}
-
-window.addEventListener("beforeinstallprompt",e=>{
-  e.preventDefault();
-  deferredInstallPromptV9=e;
-  const btn=document.getElementById("directInstallBtn");
-  if(btn) btn.hidden=false;
-});
-
+addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredInstallPromptV11=e;const b=$("directInstallBtn");if(b)b.hidden=false});
 document.addEventListener("DOMContentLoaded",()=>{
-  applyInstallGate();
-
-  const btn=document.getElementById("directInstallBtn");
-  if(btn){
-    btn.onclick=async()=>{
-      if(!deferredInstallPromptV9)return;
-      deferredInstallPromptV9.prompt();
-      try{await deferredInstallPromptV9.userChoice}catch{}
-      deferredInstallPromptV9=null;
-      btn.hidden=true;
-    };
-  }
-
-  if(isInstalledPWA()){
-    const today=new Date();
-    currentYear=today.getFullYear();
-    currentMonth=today.getMonth();
-    if(typeof renderAll==="function") renderAll();
-    if(typeof showView==="function") showView("month");
-    setTimeout(()=>{
-      const el=document.querySelector(`[data-date="${iso(today)}"]`);
-      if(el) el.scrollIntoView({block:"center",behavior:"auto"});
-    },80);
-  }
+ applyInstallV11();
+ const ib=$("directInstallBtn");if(ib)ib.onclick=async()=>{if(!deferredInstallPromptV11)return;deferredInstallPromptV11.prompt();await deferredInstallPromptV11.userChoice;deferredInstallPromptV11=null;ib.hidden=true};
+ $("sharePlanTop").onclick=openShareV11;$("todayTop").onclick=()=>{$("todayBtn").click();scrollTo({top:0,behavior:"smooth"})};
+ if(installedV11()){const d=new Date();currentYear=d.getFullYear();currentMonth=d.getMonth();renderAll();showView("month");setTimeout(()=>scrollTo(0,0),20)}
 });
+addEventListener("appinstalled",()=>location.reload());
 
-window.addEventListener("appinstalled",()=>{
-  applyInstallGate();
-  location.reload();
-});
+function setupShareV11(){
+ const y=$("shareYearV11"),f=$("shareFromMonth"),t=$("shareToMonth");if(y.options.length)return;
+ for(let n=2020;n<=2055;n++){const o=document.createElement("option");o.value=n;o.textContent=n;y.appendChild(o)}
+ monthNames.forEach((n,i)=>{[f,t].forEach(s=>{const o=document.createElement("option");o.value=i;o.textContent=n;s.appendChild(o)})})
+}
+function openShareV11(){setupShareV11();$("shareYearV11").value=currentYear;$("shareFromMonth").value=currentMonth;$("shareToMonth").value=currentMonth;$("shareGroupV11").value=selectedGroup;$("shareStatusV11").textContent="";$("shareModalV11").hidden=false}
+$("closeShareV11").onclick=()=>$("shareModalV11").hidden=true;
+$("shareModalV11").onclick=e=>{if(e.target===$("shareModalV11"))$("shareModalV11").hidden=true};
 
-window.matchMedia("(display-mode: standalone)").addEventListener?.("change",applyInstallGate);
+function b64bytes(url){const b=atob(url.split(",")[1]),u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u}
+function ab(s){return new TextEncoder().encode(s)}
+function cat(a){let n=0;a.forEach(x=>n+=x.length);const u=new Uint8Array(n);let p=0;a.forEach(x=>{u.set(x,p);p+=x.length});return u}
+function makePdf(imgs){
+ const o=[null],add=x=>(o.push(x),o.length-1),catalog=add(null),pages=add(null),pids=[];
+ imgs.forEach((im,k)=>{const iid=add({t:"img",d:im.d,w:im.w,h:im.h}),stream=ab(`q\n842 0 0 595 0 0 cm\n/I${k} Do\nQ\n`),sid=add({t:"stream",d:stream}),pid=add(`<< /Type /Page /Parent ${pages} 0 R /MediaBox [0 0 842 595] /Resources << /XObject << /I${k} ${iid} 0 R >> >> /Contents ${sid} 0 R >>`);pids.push(pid)});
+ o[catalog]=`<< /Type /Catalog /Pages ${pages} 0 R >>`;o[pages]=`<< /Type /Pages /Kids [${pids.map(x=>x+" 0 R").join(" ")}] /Count ${pids.length} >>`;
+ const parts=[ab("%PDF-1.4\n")],off=[0];let pos=parts[0].length;
+ for(let i=1;i<o.length;i++){off[i]=pos;let b,x=o[i];if(typeof x==="string")b=ab(`${i} 0 obj\n${x}\nendobj\n`);else if(x.t==="img")b=cat([ab(`${i} 0 obj\n<< /Type /XObject /Subtype /Image /Width ${x.w} /Height ${x.h} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${x.d.length} >>\nstream\n`),x.d,ab("\nendstream\nendobj\n")]);else b=cat([ab(`${i} 0 obj\n<< /Length ${x.d.length} >>\nstream\n`),x.d,ab("\nendstream\nendobj\n")]);parts.push(b);pos+=b.length}
+ let xr=`xref\n0 ${o.length}\n0000000000 65535 f \n`;for(let i=1;i<o.length;i++)xr+=String(off[i]).padStart(10,"0")+" 00000 n \n";xr+=`trailer\n<< /Size ${o.length} /Root ${catalog} 0 R >>\nstartxref\n${pos}\n%%EOF`;parts.push(ab(xr));return cat(parts)
+}
+async function rangePdfV11(){
+ const y=+$("shareYearV11").value,g=$("shareGroupV11").value,a=Math.min(+$("shareFromMonth").value,+$("shareToMonth").value),b=Math.max(+$("shareFromMonth").value,+$("shareToMonth").value),imgs=[];
+ for(let m=a;m<=b;m++){const c=shareCanvasForMonth(y,m,g);imgs.push({d:b64bytes(c.toDataURL("image/jpeg",.92)),w:c.width,h:c.height})}
+ const label=g==="ALL"?"Alle_Dienstgruppen":`Dienstgruppe_${g}`;return new File([makePdf(imgs)],`Dienstplan_${y}_${String(a+1).padStart(2,"0")}-${String(b+1).padStart(2,"0")}_${label}.pdf`,{type:"application/pdf"})
+}
+$("sharePdfBtn").onclick=async()=>{const s=$("shareStatusV11");try{s.textContent="PDF wird erstellt …";const f=await rangePdfV11();if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({title:"Dienstpläne",files:[f]});s.textContent=""}else s.textContent="Direktes Teilen nicht möglich. Nutze „PDF speichern“."}catch(e){if(e?.name!=="AbortError")s.textContent="PDF konnte nicht geteilt werden.";else s.textContent=""}};
+$("savePdfBtn").onclick=async()=>{const s=$("shareStatusV11");s.textContent="PDF wird erstellt …";const f=await rangePdfV11(),u=URL.createObjectURL(f),a=document.createElement("a");a.href=u;a.download=f.name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1200);s.textContent="PDF wurde erstellt."};

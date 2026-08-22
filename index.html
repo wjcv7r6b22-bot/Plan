@@ -13,59 +13,21 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-  <section id="installGate" class="install-gate" hidden>
-    <div class="install-gate-card">
-      <div class="install-logo">D</div>
-      <h1>Dienstplan</h1>
-      <p class="install-lead">Diese Anwendung ist für die Nutzung vom Home-Bildschirm vorgesehen.</p>
-
-      
-      <div id="iosInstallGuide" class="platform-guide visual-guide" hidden>
-        <h2>📱 Auf dem iPhone installieren</h2>
-        <p class="visual-intro">Nur 3 Schritte – danach öffnest du den Dienstplan wie eine normale App.</p>
-
-        <div class="install-step">
-          <div class="step-number">1</div>
-          <div class="step-copy"><b>⬆️ Teilen antippen</b><span>Unten in Safari auf das Teilen-Symbol tippen.</span></div>
-          <img src="iphone-schritt-1-teilen.jpeg" alt="Safari Teilen-Symbol">
-        </div>
-
-        <div class="install-step">
-          <div class="step-number">2</div>
-          <div class="step-copy"><b>➕ „Zum Home-Bildschirm“</b><span>Im Menü nach unten gehen und diesen Punkt auswählen.</span></div>
-          <img src="iphone-schritt-2-home.jpeg" alt="Zum Home-Bildschirm auswählen">
-        </div>
-
-        <div class="install-step">
-          <div class="step-number">3</div>
-          <div class="step-copy"><b>✅ „Hinzufügen“</b><span>Oben rechts auf den blauen Button tippen.</span></div>
-          <img src="iphone-schritt-3-hinzufuegen.jpeg" alt="Hinzufügen antippen">
-        </div>
-
-        <div class="done-box">🎉 <b>Fertig!</b> Jetzt auf dem Home-Bildschirm das blaue <b>D</b> öffnen.</div>
-      </div>
-
-      
-      <div id="androidInstallGuide" class="platform-guide visual-guide" hidden>
-        <h2>🤖 Auf Android installieren</h2>
-        <p class="visual-intro">Nur wenige Schritte – danach öffnest du den Dienstplan wie eine normale App.</p>
-        <div class="android-simple-step"><b>1️⃣ In Chrome öffnen</b><span>Diese Seite mit Google Chrome öffnen.</span></div>
-        <div class="android-simple-step"><b>2️⃣ App installieren</b><span>Auf „App installieren“ tippen. Falls der Button fehlt: oben rechts auf <b>⋮</b> → „Zum Startbildschirm hinzufügen“.</span></div>
-        <button id="directInstallBtn" class="direct-install-btn" hidden>📲 App installieren</button>
-        <div class="done-box">🎉 <b>Fertig!</b> Danach den Dienstplan über das <b>D</b>-Symbol öffnen.</div>
-      </div>
-
-      <div id="genericInstallGuide" class="platform-guide" hidden>
-        <h2>Als App installieren</h2>
-        <p>Öffne diese Seite auf deinem Smartphone und füge sie über den Browser zum Home-Bildschirm hinzu.</p>
-      </div>
-
-      <p class="privacy-note">Nach der Installation öffnet sich der Dienstplan direkt als App. Die Browser-Version zeigt bewusst nur diese Installationsanleitung.</p>
-      <div class="ferdi-gate">Ferdi</div>
-    </div>
-  </section>
-
+<section id="installGate" class="install-gate" hidden><div class="install-gate-card">
+<div class="install-logo">D</div><h1>Dienstpläne</h1><h2 class="install-subtitle">für Dienstgruppen Anton bis Emil</h2>
+<p class="install-lead">Bitte zuerst auf dem Home-Bildschirm installieren. Danach öffnet sich der Dienstplan wie eine normale App.</p>
+<div id="iosInstallGuide" class="visual-guide" hidden>
+<div class="install-step"><div class="step-title">1️⃣ <b>Teilen antippen</b></div><p>Unten in Safari auf <b>⬆️ Teilen</b> tippen.</p><img src="iphone-schritt-1-teilen.jpeg"></div>
+<div class="install-step"><div class="step-title">2️⃣ <b>Zum Home-Bildschirm</b></div><p><b>➕ Zum Home-Bildschirm</b> auswählen.</p><img src="iphone-schritt-2-home.jpeg"></div>
+<div class="install-step"><div class="step-title">3️⃣ <b>Hinzufügen</b></div><p>Oben rechts auf <b>✅ Hinzufügen</b> tippen.</p><img src="iphone-schritt-3-hinzufuegen.jpeg"></div>
+<div class="install-done">🎉 <b>Fertig.</b> Jetzt das blaue <b>D</b> auf dem Home-Bildschirm öffnen.</div></div>
+<div id="androidInstallGuide" class="visual-guide" hidden>
+<div class="install-step text-step"><div class="step-title">1️⃣ <b>In Chrome öffnen</b></div></div>
+<div class="install-step text-step"><div class="step-title">2️⃣ <b>Menü ⋮ öffnen</b></div><p><b>App installieren</b> oder <b>Zum Startbildschirm hinzufügen</b> wählen.</p></div>
+<button id="directInstallBtn" class="direct-install-btn" hidden>📲 App installieren</button>
+<div class="install-done">🎉 Danach den Dienstplan über das blaue <b>D</b> öffnen.</div></div>
+<div id="genericInstallGuide" class="visual-guide" hidden><div class="install-done">📱 Auf dem Smartphone über das Browser-Menü zum Home-Bildschirm hinzufügen.</div></div>
+<div class="gate-ferdi">Ferdi</div></div></section>
   <header class="app-header">
     <div>
       <h1>Dienstplan</h1>
@@ -79,13 +41,13 @@
   </header>
 
   <main>
-    <div class="simple-mode-hint">Einfach auswählen, Monat öffnen, fertig.</div>
+    
     <nav class="tabs" aria-label="Ansicht">
-      <button class="tab active" data-view="year">Jahr</button>
-      <button class="tab" data-view="month">Monat</button>
+      <button class="tab" data-view="year">Jahr</button>
+      <button class="tab active" data-view="month">Monat</button>
       <button class="tab" data-view="mine">Übersicht</button>
-      
-    </nav>
+      <button id="installTab" class="tab" data-view="install">Als App nutzen</button>
+    </nav><div class="quick-actions"><button id="sharePlanTop" class="quick-share">📄 Dienstpläne verschicken</button><button id="todayTop" class="quick-today">Heute</button></div>
 
     <section class="toolbar card">
       <label>Meine Gruppe
@@ -101,9 +63,9 @@
       <label>Datum suchen
         <input id="dateSearch" type="date" />
       </label>
-      <button id="goDate">Anzeigen</button>
-      <button id="todayBtn">Heute</button>
-      <button id="sharePlanBtn">Dienstplan verschicken</button>
+      <button id="goDate" class="legacy-hidden" aria-hidden="true" tabindex="-1">Anzeigen</button>
+      <button id="todayBtn" class="legacy-hidden" aria-hidden="true" tabindex="-1">Heute</button>
+      <button id="sharePlanBtn" class="legacy-hidden" aria-hidden="true" tabindex="-1">Dienstplan verschicken</button>
     </section>
 
     <section id="summary" class="summary card" aria-live="polite"></section>
@@ -113,11 +75,11 @@
       <div><b class="ag-f">F</b> Früh 06–14 · <b class="ag-s">S</b> Spät 14–22 · <b class="ag-n">N</b> Nacht 22–06</div>
       <div><b class="ag-fb">FB</b> Fortbildung · <b class="ag-free">–</b> Einspringen möglich · <b class="ag-x">X</b> gesichertes Frei</div>
     </div>
-<section id="yearView" class="view active">
+<section id="yearView" class="view">
       <div id="calendar" class="calendar"></div>
     </section>
 
-    <section id="monthView" class="view">
+    <section id="monthView" class="view active">
       <div class="month-nav card">
         <button id="prevMonth" class="icon-btn">‹</button>
         <h2 id="monthTitle"></h2>
@@ -134,39 +96,7 @@
       <div id="mineList" class="mine-list"></div>
     </section>
 
-    <section id="installView" class="view">
-      <div class="install-intro card">
-        <h2>Als App nutzen</h2>
-        <p>Du kannst den Dienstplan direkt auf deinem Home-Bildschirm speichern. Danach öffnet er sich wie eine App und kann auch offline funktionieren.</p>
-      </div>
-
-      <div class="install-grid">
-        <article class="install-card card">
-          <h2>iPhone</h2>
-          <img src="iphone-anleitung.png" alt="Anleitung zum Hinzufügen des Dienstplans auf den iPhone Home-Bildschirm" />
-          <ol>
-            <li>Die Dienstplan-Seite in <b>Safari</b> öffnen.</li>
-            <li>Unten auf <b>Teilen</b> tippen.</li>
-            <li><b>Zum Home-Bildschirm</b> auswählen.</li>
-            <li>Oben rechts auf <b>Hinzufügen</b> tippen.</li>
-          </ol>
-        </article>
-
-        <article class="install-card card">
-          <h2>Android</h2>
-          <img src="android-anleitung.png" alt="Anleitung zum Hinzufügen des Dienstplans auf den Android Startbildschirm" />
-          <ol>
-            <li>Die Dienstplan-Seite in <b>Chrome</b> öffnen.</li>
-            <li>Oben rechts auf die <b>drei Punkte</b> tippen.</li>
-            <li><b>App installieren</b> oder <b>Zum Startbildschirm hinzufügen</b> wählen.</li>
-            <li>Installation bestätigen.</li>
-          </ol>
-          <button id="androidInstallBtn" class="install-action" hidden>App jetzt installieren</button>
-        </article>
-      </div>
-    </section>
-
-  </main>
+    </main>
 
 
   <div id="shareModal" class="modal" hidden>
@@ -202,7 +132,17 @@
     </div>
   </div>
 
-  <div id="dayModal" class="modal" hidden>
+  <div id="shareModalV11" class="modal" hidden><div class="modal-card share-modal-card">
+<button id="closeShareV11" class="modal-close">×</button><h2>Dienstpläne verschicken</h2>
+<p class="share-help">Zeitraum und Dienstgruppe auswählen. Das PDF enthält einen Monat pro Seite.</p>
+<div class="share-form range-form">
+<label>Jahr<select id="shareYearV11"></select></label>
+<label>Von Monat<select id="shareFromMonth"></select></label>
+<label>Bis Monat<select id="shareToMonth"></select></label>
+<label>Dienstgruppe<select id="shareGroupV11"><option value="ALL">Alle Dienstgruppen</option><option value="A">Anton</option><option value="B">Berta</option><option value="C">Cäsar</option><option value="D">Dora</option><option value="E">Emil</option></select></label>
+</div><div class="share-actions"><button id="sharePdfBtn" class="primary-share">📤 PDF teilen</button><button id="savePdfBtn">⬇️ PDF speichern</button></div>
+<div id="shareStatusV11" class="share-status"></div></div></div>
+<div id="dayModal" class="modal" hidden>
     <div class="modal-card">
       <button id="closeModal" class="modal-close" aria-label="Schließen">×</button>
       <div id="modalContent"></div>

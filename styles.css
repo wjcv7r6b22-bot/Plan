@@ -371,141 +371,21 @@ body{
   user-select:none;
 }
 
-/* ===== V9: Browser zeigt nur Installationsanleitung ===== */
-.install-gate{
-  min-height:100dvh;
-  padding:max(18px,env(safe-area-inset-top)) 14px max(18px,env(safe-area-inset-bottom));
-  display:grid;
-  place-items:start center;
-  background:linear-gradient(180deg,#eef3f8 0%,#f8fafc 100%);
-  color:#17202a;
-}
-.install-gate[hidden]{display:none!important}
-.install-gate-card{
-  width:min(620px,100%);
-  background:#fff;
-  border:1px solid #e1e7ed;
-  border-radius:24px;
-  box-shadow:0 18px 48px rgba(23,59,99,.10);
-  padding:22px;
-}
-.install-logo{
-  width:82px;height:82px;border-radius:20px;
-  display:grid;place-items:center;
-  margin:0 auto 12px;
-  background:#173b63;color:#fff;
-  font:900 52px/1 system-ui,-apple-system,sans-serif;
-  box-shadow:0 10px 22px rgba(23,59,99,.20);
-}
-.install-gate h1{text-align:center;margin:0;color:#173b63;font-size:2rem}
-.install-lead{text-align:center;color:#66717c;line-height:1.45;margin:7px auto 18px;max-width:430px}
-.platform-guide{
-  background:#f7f9fb;border:1px solid #e0e7ee;border-radius:16px;padding:14px;
-}
-.platform-guide h2{margin:0 0 9px;color:#173b63;font-size:1.15rem}
-.platform-guide ol{padding-left:23px;margin:8px 0 14px;line-height:1.55}
-.platform-guide li{margin:7px 0}
-.platform-guide img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #dce4eb;background:#fff}
-.install-note,.privacy-note{color:#66717c;font-size:.82rem;line-height:1.45}
-.direct-install-btn{
-  width:100%;min-height:48px;margin:4px 0 14px;border:0;border-radius:12px;
-  background:#173b63;color:#fff;font-weight:900;font-size:1rem;
-}
-.ferdi-gate{text-align:right;color:#b4bbc2;font-size:.62rem;margin-top:7px}
-.share-symbol{font-weight:900;color:#173b63}
-
-/* Browser mode: App-Inhalt komplett ausblenden. */
-body.browser-install-only > .app-header,
-body.browser-install-only > main,
-body.browser-install-only > .modal,
-body.browser-install-only > .ferdi-signature{
-  display:none!important;
-}
-body.browser-install-only{overflow:auto}
-
-/* Installierte PWA: Gate weg, App normal sichtbar. */
-body.installed-app #installGate{display:none!important}
-
-/* Installierte App startet klar und kompakt in der Monatsansicht. */
+.legacy-hidden{display:none!important}
+.install-gate{min-height:100dvh;padding:max(12px,env(safe-area-inset-top)) 10px max(16px,env(safe-area-inset-bottom));background:#eef3f8}
+.install-gate[hidden]{display:none!important}.install-gate-card{max-width:620px;margin:auto;background:#fff;border:1px solid #e0e6ec;border-radius:22px;padding:16px;box-shadow:0 15px 40px rgba(23,59,99,.1)}
+.install-logo{width:68px;height:68px;margin:0 auto 7px;border-radius:17px;background:#173b63;color:#fff;display:grid;place-items:center;font:900 44px system-ui}
+.install-gate h1{text-align:center;color:#173b63;margin:0;font-size:1.75rem}.install-subtitle{text-align:center;margin:2px 0 7px;color:#46515c;font-size:1rem}.install-lead{text-align:center;color:#68737e;font-size:.84rem;margin:0 0 11px}
+.visual-guide{display:grid;gap:9px}.visual-guide[hidden]{display:none!important}.install-step{background:#f7f9fb;border:1px solid #e0e6ec;border-radius:14px;padding:9px}.step-title{color:#173b63;font-size:.96rem}.install-step p{margin:4px 0 7px;color:#5e6872;font-size:.78rem}.install-step img{width:100%;max-height:100px;object-fit:contain;border-radius:8px;background:#fff}.install-done{padding:10px;background:#eaf3ff;color:#173b63;border-radius:12px;text-align:center;font-size:.84rem}.direct-install-btn{min-height:45px;border:0;border-radius:11px;background:#173b63;color:#fff;font-weight:900}.gate-ferdi{text-align:right;color:#b1b8bf;font-size:.58rem;margin-top:6px}
+body.browser-install-only>.app-header,body.browser-install-only>main,body.browser-install-only>.modal,body.browser-install-only>.ferdi-signature{display:none!important}
+.quick-actions{display:flex;gap:5px;margin:3px 0 4px}.quick-actions button{min-height:32px;border-radius:9px;font-weight:850}.quick-share{flex:1;background:#173b63!important;color:#fff!important;border-color:#173b63!important}.quick-today{width:72px}
+.range-form{grid-template-columns:1fr 1fr}.range-form label:first-child,.range-form label:last-child{grid-column:1/-1}
 @media(max-width:760px){
-  body.installed-app .simple-mode-hint{display:none!important}
-  body.installed-app .tabs{margin-bottom:4px}
-  body.installed-app .toolbar{padding:7px;margin-bottom:5px}
-  body.installed-app .shift-agenda{margin:4px 7px 6px}
-  body.installed-app .month-nav{margin-bottom:4px}
-}
-
-/* ===== V10: besonders einfache visuelle Installationsanleitung ===== */
-.visual-intro{
-  margin:0 0 12px;
-  text-align:center;
-  color:#65717d;
-  font-size:.9rem;
-  line-height:1.4;
-}
-.install-step{
-  position:relative;
-  margin:12px 0;
-  padding:12px;
-  border:1px solid #dfe6ed;
-  border-radius:16px;
-  background:#fff;
-}
-.step-number{
-  position:absolute;
-  top:8px;left:8px;
-  width:30px;height:30px;
-  border-radius:50%;
-  display:grid;place-items:center;
-  background:#173b63;color:#fff;
-  font-weight:900;
-}
-.step-copy{
-  display:flex;
-  flex-direction:column;
-  gap:3px;
-  padding:1px 4px 10px 38px;
-}
-.step-copy b{font-size:1rem;color:#173b63}
-.step-copy span{font-size:.78rem;color:#66717c;line-height:1.35}
-.install-step img{
-  width:100%;
-  max-height:145px;
-  object-fit:contain;
-  background:#f6f7f9;
-  border-radius:11px;
-}
-.done-box{
-  margin-top:12px;
-  padding:12px;
-  border-radius:13px;
-  background:#edf5ff;
-  color:#173b63;
-  text-align:center;
-  font-size:.88rem;
-  line-height:1.4;
-}
-.android-simple-step{
-  display:flex;
-  flex-direction:column;
-  gap:3px;
-  margin:9px 0;
-  padding:11px;
-  border-radius:12px;
-  background:#fff;
-  border:1px solid #dfe6ed;
-}
-.android-simple-step b{color:#173b63}
-.android-simple-step span{color:#66717c;font-size:.8rem;line-height:1.4}
-
-@media(max-width:600px){
-  .install-gate{padding:10px}
-  .install-gate-card{padding:14px;border-radius:18px}
-  .install-logo{width:66px;height:66px;font-size:42px;border-radius:16px}
-  .install-gate h1{font-size:1.55rem}
-  .install-lead{font-size:.82rem;margin-bottom:12px}
-  .platform-guide{padding:10px}
-  .platform-guide h2{font-size:1.05rem}
-  .install-step{padding:9px;margin:9px 0}
-  .install-step img{max-height:105px}
+body.installed-app .app-header{padding:max(5px,env(safe-area-inset-top)) 8px 5px}body.installed-app .app-header h1{font-size:1.12rem}body.installed-app .subtitle{font-size:.66rem}
+body.installed-app main{padding:3px 5px max(5px,env(safe-area-inset-bottom))}body.installed-app .tabs{margin:0 0 2px;gap:3px}body.installed-app .tab{padding:5px 9px;font-size:.68rem}
+body.installed-app .toolbar{padding:5px;margin-bottom:3px;grid-template-columns:1fr 1fr}body.installed-app .toolbar label{font-size:.61rem}body.installed-app .toolbar select,body.installed-app .toolbar input{height:30px;min-height:30px;font-size:.7rem}
+body.installed-app .summary{padding:5px 7px;margin-bottom:3px}body.installed-app .summary h2{font-size:.86rem;margin:0}body.installed-app .summary p{font-size:.66rem;margin:1px 0}
+body.installed-app .shift-agenda{margin:2px 3px 3px;padding:3px 4px;font-size:.54rem;line-height:1.18}body.installed-app .month-nav{padding:3px;margin-bottom:2px}body.installed-app .month-nav h2{font-size:1rem}
+body.installed-app .month-large .weekdays div{padding:3px 1px;font-size:.64rem}body.installed-app .month-large .day{min-height:66px}
+.share-modal-card{max-height:92dvh;overflow:auto}
 }

@@ -1,14 +1,6 @@
-DIENSTPLAN V10 – EINFACHE INSTALLATION
-
-Browser:
-- Dienstplan ist erst nach Installation nutzbar
-- iPhone: visuelle 3-Schritt-Anleitung mit echten Safari-Bildern
-  1. Teilen
-  2. Zum Home-Bildschirm
-  3. Hinzufügen
-- Android: stark vereinfachte Anleitung + Installationsbutton, wenn verfügbar
-
-Installierte App:
-- Installationsanleitung verschwindet
-- Dienstplan startet direkt als App
-- bisherige Kalender-, Agenda- und Teilen-Funktionen bleiben erhalten
+DIENSTPLAN V11
+Browser-Link: zeigt nur die Installationsanleitung „Dienstpläne für Dienstgruppen Anton bis Emil“.
+Installierte App: startet direkt in der aktuellen Monatsansicht; Kalender ist kompakter und weiter oben.
+„Anzeigen“ ist unsichtbar.
+Dienstpläne verschicken: Jahr, Von-Monat, Bis-Monat und Dienstgruppe wählen; PDF mit einem Monat pro Seite teilen oder speichern.
+Hinweis: GitHub Pages bleibt technisch öffentlich; die Browser-Sperre ist kein Passwortschutz.
