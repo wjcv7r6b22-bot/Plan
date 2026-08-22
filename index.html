@@ -25,20 +25,19 @@
     <nav class="tabs" aria-label="Ansicht">
       <button class="tab active" data-view="year">Jahr</button>
       <button class="tab" data-view="month">Monat</button>
-      <button class="tab" data-view="mine">Mein Dienst</button>
+      <button class="tab" data-view="mine">Übersicht</button>
     </nav>
 
     <section class="toolbar card">
       <label>Meine Gruppe
         <select id="groupSelect">
-          <option>A</option><option selected>B</option><option>C</option><option>D</option><option>E</option>
+          <option value="ALL" selected>Alle Dienstgruppen</option>
+          <option value="A">Dienstgruppe A</option>
+          <option value="B">Dienstgruppe B</option>
+          <option value="C">Dienstgruppe C</option>
+          <option value="D">Dienstgruppe D</option>
+          <option value="E">Dienstgruppe E</option>
         </select>
-      <label>Ansicht
-        <select id="displayMode">
-          <option value="all" selected>Alle Dienstgruppen</option>
-          <option value="mine">Nur meine Dienstgruppe</option>
-        </select>
-      </label>
       </label>
       <label>Datum suchen
         <input id="dateSearch" type="date" />
@@ -65,8 +64,8 @@
 
     <section id="mineView" class="view">
       <div class="card mine-header">
-        <h2 id="mineTitle">Dienstgruppe B</h2>
-        <p>Deine Dienste und freien Tage im gewählten Jahr.</p>
+        <h2 id="mineTitle">Alle Dienstgruppen</h2>
+        <p id="mineSubtitle">Dienste und freie Tage im gewählten Jahr.</p>
       </div>
       <div id="mineList" class="mine-list"></div>
     </section>

@@ -1,27 +1,22 @@
-DIENSTPLAN APP V2
+DIENSTPLAN APP – V2 NEU
 
-Start:
-1. ZIP entpacken.
-2. index.html öffnen.
+Die Optik und Bedienung der bisherigen V2 bleiben erhalten.
 
-Funktionen:
-- Jahresansicht
-- große Monatsansicht
-- „Mein Dienst“-Ansicht für A–E, voreingestellt B
-- Datumssuche
-- Tagesdetails per Klick
-- A: - = Strichfrei / Einspringen möglich
-- A: X = definitiv frei (rot)
-- A: FB = Fortbildung
-- Arbeitende Gruppen immer nach Früh -> Spät -> Nacht
-- Druck/PDF
-- PWA-Grundlage (manifest + service worker)
+NEU:
+- Im Feld "Meine Gruppe" kann gewählt werden:
+  * Alle Dienstgruppen
+  * Dienstgruppe A
+  * Dienstgruppe B
+  * Dienstgruppe C
+  * Dienstgruppe D
+  * Dienstgruppe E
+- "Alle Dienstgruppen": Monats- und Jahresansicht wie bisher mit allen Gruppen.
+- Einzelne Dienstgruppe: In Monats- und Jahresansicht werden alle anderen Gruppen ausgeblendet.
+- Bei Arbeit wird nur die gewählte Gruppe mit F/S/N und Schichtzeit angezeigt.
+- Bei freien Tagen: z. B. B: - oder B: X (rot)
+- Fortbildung: z. B. B: FB
+- Tagesdetails passen sich ebenfalls an die Auswahl an.
 
-Hinweis:
-Für Installation wie eine App sollte der Ordner über HTTPS bereitgestellt werden (z. B. GitHub Pages, Netlify oder Vercel). Danach kann die Seite auf dem Smartphone zum Startbildschirm hinzugefügt werden.
-
-
-V2.1 NEU:
-- Umschalter 'Alle Dienstgruppen' / 'Nur meine Dienstgruppe'
-- Gesamtansicht bleibt unverändert
-- In 'Nur meine Dienstgruppe' wird ausschließlich die gewählte Gruppe angezeigt.
+GitHub Pages:
+Die sechs Dateien aus diesem Ordner in dein bestehendes Repository hochladen und die vorhandenen Dateien ersetzen.
+Die GitHub-Pages-Adresse bleibt gleich.
