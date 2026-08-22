@@ -230,7 +230,7 @@ function updateInstallTab(){
   const installed=isInstalledApp();
   if(tab) tab.hidden=installed;
   if(view && installed) view.hidden=true;
-  if(installed && tab?.classList.contains("active")) showView("year");
+  if(installed && tab?.classList.contains("active")) showView("month");
 }
 
 let deferredInstallPrompt=null;
@@ -450,3 +450,61 @@ $("saveImageBtn").onclick=async()=>{
   setTimeout(()=>URL.revokeObjectURL(url),1000);
   status.textContent="Bild wurde erstellt.";
 };
+
+// ===== V8 Fokus / Installation / Top-Share =====
+function isStandaloneApp(){
+  return window.matchMedia("(display-mode: standalone)").matches ||
+         window.matchMedia("(display-mode: fullscreen)").matches ||
+         window.navigator.standalone === true;
+}
+
+function applyInstalledState(){
+  const installed=isStandaloneApp();
+  document.body.classList.toggle("app-installed",installed);
+  const banner=document.getElementById("installBanner");
+  if(banner) banner.hidden=installed;
+  const tab=document.getElementById("installTab");
+  if(tab) tab.hidden=installed;
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  applyInstalledState();
+
+  const installBtn=document.getElementById("installBannerBtn");
+  if(installBtn){
+    installBtn.onclick=()=>{
+      if(typeof showView==="function") showView("install");
+      document.getElementById("installView")?.scrollIntoView({behavior:"smooth",block:"start"});
+    };
+  }
+
+  const topShare=document.getElementById("headerSharePlanBtn");
+  if(topShare){
+    topShare.onclick=()=>{
+      setupSharePlan?.();
+      const sy=document.getElementById("shareYear");
+      const sm=document.getElementById("shareMonth");
+      const sg=document.getElementById("shareGroup");
+      if(sy) sy.value=currentYear;
+      if(sm) sm.value=currentMonth;
+      if(sg) sg.value=selectedGroup;
+      const modal=document.getElementById("shareModal");
+      if(modal) modal.hidden=false;
+    };
+  }
+});
+
+window.matchMedia("(display-mode: standalone)").addEventListener?.("change",applyInstalledState);
+
+// Beim Öffnen sofort aktuelle Monatsansicht, ohne unnötige Zwischenansichten.
+window.addEventListener("load",()=>{
+  const d=new Date();
+  currentYear=d.getFullYear();
+  currentMonth=d.getMonth();
+  if(typeof renderAll==="function") renderAll();
+  if(typeof showView==="function") showView("month");
+  setTimeout(()=>{
+    const today=document.querySelector(`[data-date="${iso(d)}"]`);
+    if(today) today.scrollIntoView({block:"center",behavior:"auto"});
+  },50);
+});

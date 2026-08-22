@@ -1,18 +1,15 @@
-DIENSTPLAN V7 – DAUERHAFTE AGENDA
+DIENSTPLAN V8 – MONATSFOKUS
 
 Neu:
-- kompakte Dienst-Agenda in der App
-- sichtbar bei Gesamtansicht und einzelnen Dienstgruppen
-- sichtbar bei Monats- und Jahresansicht
-- direkt beim Kalender, damit der Kalender weiterhin im Fokus bleibt
-- F Früh 06–14
-- S Spät 14–22
-- N Nacht 22–06
-- FB Fortbildung
-- – Einspringen möglich
-- X gesichertes Frei
-- Farben entsprechen dem Kalender
-- Kurzübersicht bleibt auch in verschickten Dienstplanbildern erhalten
+- überflüssigen Reiter „Anzeigen“ entfernt
+- beim Öffnen sofort aktuelle Monatsübersicht
+- Kalender deutlich weiter oben, weniger Scrollen
+- „Als App nutzen“ im Safari/Browser-Modus deutlich sichtbarer
+- nach Installation verschwindet „Als App nutzen“ automatisch
+- „Dienstplan verschicken“ jetzt oben im Kopfbereich
+- vorhandene Teilen-Funktion bleibt erhalten
+- Agenda bleibt kompakt
+- Ferdi-Signatur bleibt erhalten
 
 GitHub:
-Alle Dateien aus der ZIP hochladen und vorhandene Dateien ersetzen.
+Alle Dateien hochladen und vorhandene Dateien ersetzen.

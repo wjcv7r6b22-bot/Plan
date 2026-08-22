@@ -34,6 +34,15 @@
       <button id="installTab" class="tab" data-view="install">Als App nutzen</button>
     </nav>
 
+    <div id="installBanner" class="install-banner" hidden>
+      <div>
+        <b>Als App nutzen</b>
+        <span>Zum Home-Bildschirm hinzufügen</span>
+      </div>
+      <button id="installBannerBtn">So geht’s</button>
+    </div>
+
+
     <section class="toolbar card">
       <label>Meine Gruppe
         <select id="groupSelect">
@@ -48,12 +57,12 @@
       <label>Datum suchen
         <input id="dateSearch" type="date" />
       </label>
-      <button id="goDate">Anzeigen</button>
+      
       <button id="todayBtn">Heute</button>
-      <button id="sharePlanBtn">Dienstplan verschicken</button>
+      
     </section>
 
-    <section id="summary" class="summary card" aria-live="polite"></section>
+    <section id="summary" class="summary-compact" class="summary card" aria-live="polite"></section>
 
     
     <div id="shiftAgenda" class="shift-agenda" aria-label="Dienstlegende">
@@ -157,5 +166,6 @@
   </div>
 
   <script src="app.js"></script>
+  <div class="ferdi-signature">Ferdi</div>
 </body>
 </html>
