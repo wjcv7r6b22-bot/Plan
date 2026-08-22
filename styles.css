@@ -29,3 +29,29 @@
   .month-large .single-group-day .single-shift{font-size:.62rem;margin-top:3px}
   .month-large .single-group-day .single-status{font-size:.68rem;margin-top:12px}
 }
+
+/* Finale Einzelgruppenansicht: nur F / S / N / - / X / FB */
+.single-group-day .single-shift,
+.single-group-day .single-status{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  font-size:1.35rem;
+  font-weight:950;
+  margin-top:10px;
+}
+.month-large .single-group-day .single-shift,
+.month-large .single-group-day .single-status{
+  min-height:70px;
+  font-size:1.75rem;
+  margin-top:12px;
+}
+@media(max-width:700px){
+  .month-large .single-group-day .single-shift,
+  .month-large .single-group-day .single-status{
+    min-height:45px;
+    font-size:1.2rem;
+    margin-top:6px;
+  }
+}

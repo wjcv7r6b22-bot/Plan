@@ -46,11 +46,11 @@ function allStatusHtml(p){
 function singleGroupHtml(g,d){
   const s=duty(g,d);
   if(s==="F"||s==="S"||s==="N"){
-    return `<div class="work single-work">${g}</div><div class="single-shift shift-${s}">${shiftNames[s]}</div>`;
+    return `<div class="single-shift shift-${s}">${shiftShort[s]}</div>`;
   }
-  if(s==="-") return `<div class="status dash single-status">${g}: -</div>`;
-  if(s==="X") return `<div class="status x single-status">${g}: X</div>`;
-  if(s==="FB") return `<div class="status fb single-status">${g}: FB</div>`;
+  if(s==="-") return `<div class="status dash single-status">-</div>`;
+  if(s==="X") return `<div class="status x single-status">X</div>`;
+  if(s==="FB") return `<div class="status fb single-status">FB</div>`;
   return "";
 }
 
@@ -139,8 +139,7 @@ function renderSummary(d=new Date()){
       <span>Dienst Früh → Spät → Nacht: <b>${p.work.join(" ")||"–"}</b></span>`;
   }else{
     const s=duty(selectedGroup,d);
-    $("summary").innerHTML=`<strong>${d.toLocaleDateString("de-DE",{weekday:"long",day:"2-digit",month:"2-digit",year:"numeric"})}</strong>
-      <span>Dienstgruppe ${selectedGroup}: <b>${shiftNames[s]}</b></span>`;
+    $("summary").innerHTML=`<strong>${d.toLocaleDateString("de-DE",{weekday:"long",day:"2-digit",month:"2-digit",year:"numeric"})}</strong>\n      <span><b>${shiftNames[s]}</b></span>`;
   }
 }
 function bindDays(){
@@ -150,10 +149,10 @@ function openDay(d){
   const ds=duties(d);
   let rows;
   if(selectedGroup==="ALL"){
-    rows=groups.map(g=>`<div class="detail-row"><div class="detail-group">${g}</div><div class="detail-shift">${shiftNames[ds[g]]}</div></div>`).join("");
+    rows=groups.map(g=>`<div class="detail-row"><div class="detail-group">${g}</div><div class="detail-shift">${shiftNames[ds[g]]}${shiftTimes[ds[g]]?` · ${shiftTimes[ds[g]]} Uhr`:""}</div></div>`).join("");
   }else{
     const s=ds[selectedGroup];
-    rows=`<div class="detail-row"><div class="detail-group">${selectedGroup}</div><div class="detail-shift">${shiftNames[s]}</div></div>`;
+    rows=`<div class="detail-row"><div class="detail-shift">${shiftNames[s]}</div></div>`;
   }
   $("modalContent").innerHTML=`<h2>${d.toLocaleDateString("de-DE",{weekday:"long",day:"2-digit",month:"long",year:"numeric"})}</h2>${rows}`;
   $("dayModal").hidden=false;
