@@ -215,3 +215,40 @@ document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>showView(t.dataset.vi
 
 if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
 renderAll();
+
+
+// "Als App nutzen" nur im Browser anzeigen.
+// Wenn die PWA vom Home-Bildschirm/Startbildschirm gestartet wurde, verschwindet der Reiter.
+function isInstalledApp(){
+  return window.matchMedia("(display-mode: standalone)").matches ||
+         window.matchMedia("(display-mode: fullscreen)").matches ||
+         window.navigator.standalone === true;
+}
+function updateInstallTab(){
+  const tab=document.getElementById("installTab");
+  const view=document.getElementById("installView");
+  const installed=isInstalledApp();
+  if(tab) tab.hidden=installed;
+  if(view && installed) view.hidden=true;
+  if(installed && tab?.classList.contains("active")) showView("year");
+}
+
+let deferredInstallPrompt=null;
+window.addEventListener("beforeinstallprompt",e=>{
+  e.preventDefault();
+  deferredInstallPrompt=e;
+  const btn=document.getElementById("androidInstallBtn");
+  if(btn) btn.hidden=false;
+});
+document.addEventListener("DOMContentLoaded",()=>{
+  updateInstallTab();
+  const btn=document.getElementById("androidInstallBtn");
+  if(btn) btn.onclick=async()=>{
+    if(!deferredInstallPrompt)return;
+    deferredInstallPrompt.prompt();
+    try{await deferredInstallPrompt.userChoice}catch{}
+    deferredInstallPrompt=null;
+    btn.hidden=true;
+  };
+});
+window.matchMedia("(display-mode: standalone)").addEventListener?.("change",updateInstallTab);

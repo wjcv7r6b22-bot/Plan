@@ -1,1 +1,18 @@
-{"name":"Dienstplan","short_name":"Dienstplan","start_url":"./index.html","display":"standalone","background_color":"#f5f7fa","theme_color":"#173b63","lang":"de"}
+{
+  "name": "Dienstplan",
+  "short_name": "Dienstplan",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f7fa",
+  "theme_color": "#173b63",
+  "lang": "de",
+  "scope": "./",
+  "icons": [
+    {
+      "src": "iphone-anleitung.png",
+      "sizes": "1200x980",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

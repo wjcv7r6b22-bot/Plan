@@ -18,3 +18,10 @@ Upload zu GitHub:
 3. Alle 6 Dateien hochladen und vorhandene Dateien ersetzen.
 4. „Commit changes“ drücken.
 5. GitHub Pages aktualisiert dieselbe App-Adresse automatisch.
+
+
+NEU:
+- Reiter „Als App nutzen“
+- Anleitung für iPhone und Android mit einfachen Bildern
+- Android kann bei unterstützten Browsern direkt eine Installations-Schaltfläche anzeigen
+- Sobald die App vom Home-Bildschirm/Startbildschirm im Standalone-Modus geöffnet wird, verschwindet der Reiter automatisch
