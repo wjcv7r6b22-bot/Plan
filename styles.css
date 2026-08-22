@@ -389,3 +389,28 @@ body.installed-app .shift-agenda{margin:2px 3px 3px;padding:3px 4px;font-size:.5
 body.installed-app .month-large .weekdays div{padding:3px 1px;font-size:.64rem}body.installed-app .month-large .day{min-height:66px}
 .share-modal-card{max-height:92dvh;overflow:auto}
 }
+/* ===== V12: professionelle Installationsanleitung ===== */
+.install-gate{min-height:100dvh;padding:max(18px,env(safe-area-inset-top)) 14px max(22px,env(safe-area-inset-bottom));background:linear-gradient(180deg,#edf3f8 0%,#f7f9fb 100%);color:#18222d}
+.install-gate-card{width:min(590px,100%);margin:0 auto;background:#fff;border:1px solid #dfe7ee;border-radius:24px;padding:18px;box-shadow:0 18px 50px rgba(22,52,82,.10)}
+.install-brand{display:flex;align-items:center;gap:13px;padding-bottom:15px;border-bottom:1px solid #e7edf2}
+.install-brand .install-logo{flex:0 0 58px;width:58px;height:58px;margin:0;border-radius:15px;font:900 37px/1 system-ui;background:#173f69;color:#fff}
+.install-brand h1{margin:0;text-align:left;font-size:1.55rem;line-height:1.05;color:#173f69}
+.install-brand p{margin:4px 0 0;color:#687582;font-size:.78rem}
+.install-intro{padding:17px 2px 12px}.install-intro h2{margin:0 0 6px;color:#1d2b38;font-size:1.16rem;line-height:1.25}.install-intro p{margin:0;color:#64717d;font-size:.82rem;line-height:1.45}
+.platform-title{display:flex;align-items:center;gap:10px;background:#173f69;color:#fff;border-radius:15px;padding:11px 13px;margin-bottom:10px}
+.platform-title>span{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.14);font-size:1.2rem;font-weight:900}
+.platform-title strong{display:block;font-size:.94rem}.platform-title small{display:block;margin-top:2px;color:#d9e5f0;font-size:.68rem}
+.pro-steps{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.pro-steps li{display:grid;grid-template-columns:30px 1fr;gap:9px;padding:11px;background:#f7f9fb;border:1px solid #e2e8ee;border-radius:14px}
+.step-number{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#e4eef8;color:#173f69;font-size:.78rem;font-weight:900}
+.step-copy>strong{display:block;color:#1d2b38;font-size:.88rem}.step-copy p{margin:3px 0 8px;color:#65717c;font-size:.74rem;line-height:1.4}
+.ui-demo{min-height:43px;border:1px solid #dfe5eb;background:#fff;border-radius:12px;display:flex;align-items:center;padding:7px 10px;color:#17212b;box-shadow:0 3px 10px rgba(20,44,68,.05)}
+.safari-demo{justify-content:space-between;font-size:1.45rem;font-weight:500}.safari-demo .muted{color:#b9c0c7}.share-icon{width:31px;height:31px;border:2px solid #17212b;border-top:0;border-radius:5px;text-align:center;font-size:1.35rem;line-height:24px}
+.menu-demo{gap:10px;font-size:.79rem}.plus-box{display:grid;place-items:center;width:27px;height:27px;border:2px solid #202a33;border-radius:7px;font-size:1.15rem}.download-mark{display:grid;place-items:center;width:27px;height:27px;border-radius:7px;background:#e7f0f8;color:#173f69;font-size:1.1rem;font-weight:900}
+.add-demo,.android-confirm{justify-content:space-between;font-size:.75rem}.add-demo b,.android-confirm b{color:#087ff5;font-size:.82rem}
+.chrome-demo{justify-content:space-between}.address-pill{flex:1;margin-right:12px;padding:7px 10px;border-radius:18px;background:#f0f3f5;color:#7a858f;font-size:.7rem}.dots{font-size:1.4rem}
+.install-success{display:flex;gap:9px;align-items:center;margin-top:10px;padding:11px 12px;border-radius:14px;background:#edf7f0;border:1px solid #d4ead9;color:#245b32}.install-success>span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#2d7b40;color:#fff;font-weight:900}.install-success strong{display:block;font-size:.84rem}.install-success p{margin:2px 0 0;font-size:.71rem;line-height:1.35}
+.direct-install-btn{margin:10px 0 0;width:100%;min-height:44px;background:#173f69;color:#fff;border:0;border-radius:12px;font-weight:850}
+.generic-copy{margin:0;padding:13px;border-radius:13px;background:#f7f9fb;color:#5f6b76;font-size:.78rem;line-height:1.45}
+.privacy-note{text-align:center;margin:13px 0 0;color:#8a949d;font-size:.64rem}
+@media(max-width:420px){.install-gate{padding-left:9px;padding-right:9px}.install-gate-card{padding:14px;border-radius:20px}.install-intro{padding-top:14px}.pro-steps li{padding:9px}.step-copy p{font-size:.72rem}}

@@ -1,6 +1,12 @@
-DIENSTPLAN V11
-Browser-Link: zeigt nur die Installationsanleitung „Dienstpläne für Dienstgruppen Anton bis Emil“.
-Installierte App: startet direkt in der aktuellen Monatsansicht; Kalender ist kompakter und weiter oben.
-„Anzeigen“ ist unsichtbar.
-Dienstpläne verschicken: Jahr, Von-Monat, Bis-Monat und Dienstgruppe wählen; PDF mit einem Monat pro Seite teilen oder speichern.
-Hinweis: GitHub Pages bleibt technisch öffentlich; die Browser-Sperre ist kein Passwortschutz.
+DIENSTPLAN V12
+
+Installationsseite vollständig überarbeitet:
+- professionelles, ruhiges Layout
+- keine übernommenen Screenshots
+- keine Namens-/Ferdi-Angabe auf der Installationsseite
+- klare iPhone-Anleitung für Safari
+- klare Android-Anleitung für Chrome
+- vereinfachte grafische Darstellungen der benötigten Schaltflächen
+- Rechtschreibung und Formulierungen überarbeitet
+
+Die eigentliche Dienstplan-App und die PDF-/Zeitraum-Funktion aus V11 bleiben erhalten.

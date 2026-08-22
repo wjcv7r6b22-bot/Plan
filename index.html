@@ -13,22 +13,108 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<section id="installGate" class="install-gate" hidden><div class="install-gate-card">
-<div class="install-logo">D</div><h1>Dienstpläne</h1><h2 class="install-subtitle">für Dienstgruppen Anton bis Emil</h2>
-<p class="install-lead">Bitte zuerst auf dem Home-Bildschirm installieren. Danach öffnet sich der Dienstplan wie eine normale App.</p>
-<div id="iosInstallGuide" class="visual-guide" hidden>
-<div class="install-step"><div class="step-title">1️⃣ <b>Teilen antippen</b></div><p>Unten in Safari auf <b>⬆️ Teilen</b> tippen.</p><img src="iphone-schritt-1-teilen.jpeg"></div>
-<div class="install-step"><div class="step-title">2️⃣ <b>Zum Home-Bildschirm</b></div><p><b>➕ Zum Home-Bildschirm</b> auswählen.</p><img src="iphone-schritt-2-home.jpeg"></div>
-<div class="install-step"><div class="step-title">3️⃣ <b>Hinzufügen</b></div><p>Oben rechts auf <b>✅ Hinzufügen</b> tippen.</p><img src="iphone-schritt-3-hinzufuegen.jpeg"></div>
-<div class="install-done">🎉 <b>Fertig.</b> Jetzt das blaue <b>D</b> auf dem Home-Bildschirm öffnen.</div></div>
-<div id="androidInstallGuide" class="visual-guide" hidden>
-<div class="install-step text-step"><div class="step-title">1️⃣ <b>In Chrome öffnen</b></div></div>
-<div class="install-step text-step"><div class="step-title">2️⃣ <b>Menü ⋮ öffnen</b></div><p><b>App installieren</b> oder <b>Zum Startbildschirm hinzufügen</b> wählen.</p></div>
-<button id="directInstallBtn" class="direct-install-btn" hidden>📲 App installieren</button>
-<div class="install-done">🎉 Danach den Dienstplan über das blaue <b>D</b> öffnen.</div></div>
-<div id="genericInstallGuide" class="visual-guide" hidden><div class="install-done">📱 Auf dem Smartphone über das Browser-Menü zum Home-Bildschirm hinzufügen.</div></div>
-<div class="gate-ferdi">Ferdi</div></div></section>
-  <header class="app-header">
+<section id="installGate" class="install-gate" hidden>
+  <div class="install-gate-card">
+    <div class="install-brand">
+      <div class="install-logo">D</div>
+      <div>
+        <h1>Dienstplan</h1>
+        <p>Dienstgruppen Anton bis Emil</p>
+      </div>
+    </div>
+
+    <div class="install-intro">
+      <h2>App auf dem Smartphone installieren</h2>
+      <p>Der Dienstplan ist für die Nutzung über den Home-Bildschirm vorgesehen. Die Installation dauert nur wenige Sekunden.</p>
+    </div>
+
+    <div id="iosInstallGuide" class="visual-guide" hidden>
+      <div class="platform-title">
+        <span class="platform-symbol"></span>
+        <div><strong>Installation auf dem iPhone</strong><small>Bitte in Safari öffnen.</small></div>
+      </div>
+
+      <ol class="pro-steps">
+        <li>
+          <span class="step-number">1</span>
+          <div class="step-copy">
+            <strong>Teilen öffnen</strong>
+            <p>Tippe unten in Safari auf das <b>Teilen-Symbol</b>.</p>
+            <div class="ui-demo safari-demo">
+              <span>‹</span><span class="muted">›</span>
+              <span class="share-icon" aria-label="Teilen">⇧</span>
+              <span>▱</span><span>▣</span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="step-number">2</span>
+          <div class="step-copy">
+            <strong>Zum Home-Bildschirm wählen</strong>
+            <p>Scrolle im Teilen-Menü nach unten und tippe auf <b>„Zum Home-Bildschirm“</b>.</p>
+            <div class="ui-demo menu-demo"><span class="plus-box">＋</span><b>Zum Home-Bildschirm</b></div>
+          </div>
+        </li>
+        <li>
+          <span class="step-number">3</span>
+          <div class="step-copy">
+            <strong>Hinzufügen bestätigen</strong>
+            <p>Tippe oben rechts auf <b>„Hinzufügen“</b>.</p>
+            <div class="ui-demo add-demo"><span>Abbrechen</span><b>Hinzufügen</b></div>
+          </div>
+        </li>
+      </ol>
+      <div class="install-success"><span>✓</span><div><strong>Fertig</strong><p>Öffne anschließend das blaue <b>D</b> auf deinem Home-Bildschirm.</p></div></div>
+    </div>
+
+    <div id="androidInstallGuide" class="visual-guide" hidden>
+      <div class="platform-title">
+        <span class="android-mark">A</span>
+        <div><strong>Installation auf Android</strong><small>Am besten in Google Chrome öffnen.</small></div>
+      </div>
+
+      <ol class="pro-steps">
+        <li>
+          <span class="step-number">1</span>
+          <div class="step-copy">
+            <strong>Browser-Menü öffnen</strong>
+            <p>Tippe oben rechts in Chrome auf das <b>Drei-Punkte-Menü</b>.</p>
+            <div class="ui-demo chrome-demo"><span class="address-pill">Dienstplan</span><b class="dots">⋮</b></div>
+          </div>
+        </li>
+        <li>
+          <span class="step-number">2</span>
+          <div class="step-copy">
+            <strong>App installieren</strong>
+            <p>Wähle <b>„App installieren“</b>. Je nach Android-Version kann der Eintrag auch <b>„Zum Startbildschirm hinzufügen“</b> heißen.</p>
+            <div class="ui-demo menu-demo"><span class="download-mark">↓</span><b>App installieren</b></div>
+          </div>
+        </li>
+        <li>
+          <span class="step-number">3</span>
+          <div class="step-copy">
+            <strong>Installation bestätigen</strong>
+            <p>Bestätige die Abfrage mit <b>„Installieren“</b> oder <b>„Hinzufügen“</b>.</p>
+            <div class="ui-demo android-confirm"><span>Abbrechen</span><b>Installieren</b></div>
+          </div>
+        </li>
+      </ol>
+      <button id="directInstallBtn" class="direct-install-btn" hidden>App installieren</button>
+      <div class="install-success"><span>✓</span><div><strong>Fertig</strong><p>Öffne anschließend die Dienstplan-App über das blaue <b>D</b>.</p></div></div>
+    </div>
+
+    <div id="genericInstallGuide" class="visual-guide" hidden>
+      <div class="platform-title">
+        <span class="phone-mark">▯</span>
+        <div><strong>Auf dem Smartphone installieren</strong><small>Öffne diese Seite in Safari oder Chrome.</small></div>
+      </div>
+      <p class="generic-copy">Nutze im Browser die Funktion <b>„Zum Home-Bildschirm“</b> beziehungsweise <b>„App installieren“</b>. Danach startest du den Dienstplan über das blaue <b>D</b> auf deinem Home-Bildschirm.</p>
+    </div>
+
+    <p class="privacy-note">Nach der Installation startet der Dienstplan direkt als App.</p>
+  </div>
+</section>
+<header class="app-header">
     <div>
       <h1>Dienstplan</h1>
       <div class="subtitle">Dienstgruppen A–E</div>
