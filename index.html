@@ -14,106 +14,29 @@
 </head>
 <body>
 <section id="installGate" class="install-gate" hidden>
-  <div class="install-gate-card">
-    <div class="install-brand">
-      <div class="install-logo">D</div>
-      <div>
-        <h1>Dienstplan</h1>
-        <p>Dienstgruppen Anton bis Emil</p>
-      </div>
-    </div>
+<div class="install-gate-card">
+<div class="install-brand"><div class="install-logo">D</div><div><h1>Dienstplan</h1><p>Dienstgruppen Anton bis Emil</p></div></div>
+<div class="install-intro"><h2>Auf dem Home-Bildschirm installieren</h2><p>Installiere den Dienstplan einmal auf deinem Smartphone. Danach öffnest du ihn über das blaue D wie eine normale App.</p></div>
 
-    <div class="install-intro">
-      <h2>App auf dem Smartphone installieren</h2>
-      <p>Der Dienstplan ist für die Nutzung über den Home-Bildschirm vorgesehen. Die Installation dauert nur wenige Sekunden.</p>
-    </div>
+<section class="platform-section">
+<div class="platform-heading"><span>iOS</span><div><h3>iPhone</h3><p>Installation mit Safari</p></div></div>
+<div class="instruction-list">
+<article class="instruction-card"><span class="instruction-no">1</span><div><h4>Teilen-Symbol antippen</h4><p>Öffne diese Seite in <b>Safari</b> und tippe unten auf das Teilen-Symbol.</p><img class="safari-toolbar-img" src="safari-teilen-leiste.jpeg" alt="Safari-Leiste mit Teilen-Symbol"></div></article>
+<article class="instruction-card"><span class="instruction-no">2</span><div><h4>„Zum Home-Bildschirm“ auswählen</h4><p>Scrolle im Teilen-Menü nach unten und tippe auf <b>„Zum Home-Bildschirm“</b>.</p><div class="ios-menu-row"><span class="ios-plus">＋</span><span>Zum Home-Bildschirm</span></div></div></article>
+<article class="instruction-card"><span class="instruction-no">3</span><div><h4>Hinzufügen</h4><p>Tippe oben rechts auf <b>„Hinzufügen“</b>. Danach erscheint das blaue D auf deinem Home-Bildschirm.</p><div class="ios-add-bar"><span>Zum Home-Bildschirm</span><b>Hinzufügen</b></div></div></article>
+</div></section>
 
-    <div id="iosInstallGuide" class="visual-guide" hidden>
-      <div class="platform-title">
-        <span class="platform-symbol"></span>
-        <div><strong>Installation auf dem iPhone</strong><small>Bitte in Safari öffnen.</small></div>
-      </div>
+<section class="platform-section">
+<div class="platform-heading"><span>A</span><div><h3>Android</h3><p>Installation mit Google Chrome</p></div></div>
+<div class="instruction-list">
+<article class="instruction-card"><span class="instruction-no">1</span><div><h4>Browser-Menü öffnen</h4><p>Öffne diese Seite in <b>Google Chrome</b> und tippe oben rechts auf das <b>Drei-Punkte-Menü ⋮</b>.</p></div></article>
+<article class="instruction-card"><span class="instruction-no">2</span><div><h4>App installieren</h4><p>Tippe auf <b>„App installieren“</b>. Je nach Gerät kann der Punkt auch <b>„Zum Startbildschirm hinzufügen“</b> heißen.</p><div class="android-menu-row"><span>↓</span><b>App installieren</b></div></div></article>
+<article class="instruction-card"><span class="instruction-no">3</span><div><h4>Installation bestätigen</h4><p>Bestätige mit <b>„Installieren“</b> oder <b>„Hinzufügen“</b>. Danach findest du das blaue D auf deinem Startbildschirm.</p></div></article>
+</div><button id="directInstallBtn" class="direct-install-btn" hidden>App direkt installieren</button></section>
 
-      <ol class="pro-steps">
-        <li>
-          <span class="step-number">1</span>
-          <div class="step-copy">
-            <strong>Teilen öffnen</strong>
-            <p>Tippe unten in Safari auf das <b>Teilen-Symbol</b>.</p>
-            <div class="ui-demo safari-demo">
-              <span>‹</span><span class="muted">›</span>
-              <span class="share-icon" aria-label="Teilen">⇧</span>
-              <span>▱</span><span>▣</span>
-            </div>
-          </div>
-        </li>
-        <li>
-          <span class="step-number">2</span>
-          <div class="step-copy">
-            <strong>Zum Home-Bildschirm wählen</strong>
-            <p>Scrolle im Teilen-Menü nach unten und tippe auf <b>„Zum Home-Bildschirm“</b>.</p>
-            <div class="ui-demo menu-demo"><span class="plus-box">＋</span><b>Zum Home-Bildschirm</b></div>
-          </div>
-        </li>
-        <li>
-          <span class="step-number">3</span>
-          <div class="step-copy">
-            <strong>Hinzufügen bestätigen</strong>
-            <p>Tippe oben rechts auf <b>„Hinzufügen“</b>.</p>
-            <div class="ui-demo add-demo"><span>Abbrechen</span><b>Hinzufügen</b></div>
-          </div>
-        </li>
-      </ol>
-      <div class="install-success"><span>✓</span><div><strong>Fertig</strong><p>Öffne anschließend das blaue <b>D</b> auf deinem Home-Bildschirm.</p></div></div>
-    </div>
-
-    <div id="androidInstallGuide" class="visual-guide" hidden>
-      <div class="platform-title">
-        <span class="android-mark">A</span>
-        <div><strong>Installation auf Android</strong><small>Am besten in Google Chrome öffnen.</small></div>
-      </div>
-
-      <ol class="pro-steps">
-        <li>
-          <span class="step-number">1</span>
-          <div class="step-copy">
-            <strong>Browser-Menü öffnen</strong>
-            <p>Tippe oben rechts in Chrome auf das <b>Drei-Punkte-Menü</b>.</p>
-            <div class="ui-demo chrome-demo"><span class="address-pill">Dienstplan</span><b class="dots">⋮</b></div>
-          </div>
-        </li>
-        <li>
-          <span class="step-number">2</span>
-          <div class="step-copy">
-            <strong>App installieren</strong>
-            <p>Wähle <b>„App installieren“</b>. Je nach Android-Version kann der Eintrag auch <b>„Zum Startbildschirm hinzufügen“</b> heißen.</p>
-            <div class="ui-demo menu-demo"><span class="download-mark">↓</span><b>App installieren</b></div>
-          </div>
-        </li>
-        <li>
-          <span class="step-number">3</span>
-          <div class="step-copy">
-            <strong>Installation bestätigen</strong>
-            <p>Bestätige die Abfrage mit <b>„Installieren“</b> oder <b>„Hinzufügen“</b>.</p>
-            <div class="ui-demo android-confirm"><span>Abbrechen</span><b>Installieren</b></div>
-          </div>
-        </li>
-      </ol>
-      <button id="directInstallBtn" class="direct-install-btn" hidden>App installieren</button>
-      <div class="install-success"><span>✓</span><div><strong>Fertig</strong><p>Öffne anschließend die Dienstplan-App über das blaue <b>D</b>.</p></div></div>
-    </div>
-
-    <div id="genericInstallGuide" class="visual-guide" hidden>
-      <div class="platform-title">
-        <span class="phone-mark">▯</span>
-        <div><strong>Auf dem Smartphone installieren</strong><small>Öffne diese Seite in Safari oder Chrome.</small></div>
-      </div>
-      <p class="generic-copy">Nutze im Browser die Funktion <b>„Zum Home-Bildschirm“</b> beziehungsweise <b>„App installieren“</b>. Danach startest du den Dienstplan über das blaue <b>D</b> auf deinem Home-Bildschirm.</p>
-    </div>
-
-    <p class="privacy-note">Nach der Installation startet der Dienstplan direkt als App.</p>
-  </div>
-</section>
+<div id="iosInstallGuide" hidden></div><div id="androidInstallGuide" hidden></div><div id="genericInstallGuide" hidden></div>
+<div class="install-finish"><span>✓</span><div><strong>Fertig</strong><p>Öffne den Dienstplan anschließend über das blaue D auf deinem Home- bzw. Startbildschirm.</p></div></div>
+</div></section>
 <header class="app-header">
     <div>
       <h1>Dienstplan</h1>

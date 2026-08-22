@@ -1,12 +1,11 @@
-DIENSTPLAN V12
+DIENSTPLAN V14
 
-Installationsseite vollständig überarbeitet:
-- professionelles, ruhiges Layout
-- keine übernommenen Screenshots
-- keine Namens-/Ferdi-Angabe auf der Installationsseite
-- klare iPhone-Anleitung für Safari
-- klare Android-Anleitung für Chrome
-- vereinfachte grafische Darstellungen der benötigten Schaltflächen
-- Rechtschreibung und Formulierungen überarbeitet
+Änderungen:
+- Frühdienst (F), Spätdienst (S) und Nachtdienst (N) werden in der Einzelgruppenansicht schwarz dargestellt.
+- Die Agenda zeigt F, S und N ebenfalls schwarz.
+- FB bleibt blau, X bleibt rot und „-“ bleibt grau.
+- Exportierte bzw. geteilte Dienstpläne verwenden F, S und N ebenfalls schwarz.
+- Beim Öffnen der Jahresansicht springt die App automatisch zum aktuellen Monat.
+- Der heutige Tag wird auch in der Jahresübersicht gelb hervorgehoben.
 
-Die eigentliche Dienstplan-App und die PDF-/Zeitraum-Funktion aus V11 bleiben erhalten.
+Alle bisherigen Funktionen aus V13 bleiben erhalten.

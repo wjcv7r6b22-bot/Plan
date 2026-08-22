@@ -341,9 +341,9 @@ function shareCanvasForMonth(year, month, group){
       const s=duty(group,d);
       ctx.textAlign="center";
       ctx.font="bold 52px system-ui,-apple-system,sans-serif";
-      if(s==="F"){ctx.fillStyle=green;ctx.fillText("F",x+cellW/2,y+112)}
-      else if(s==="S"){ctx.fillStyle=orange;ctx.fillText("S",x+cellW/2,y+112)}
-      else if(s==="N"){ctx.fillStyle=blue;ctx.fillText("N",x+cellW/2,y+112)}
+      if(s==="F"){ctx.fillStyle="#111111";ctx.fillText("F",x+cellW/2,y+112)}
+      else if(s==="S"){ctx.fillStyle="#111111";ctx.fillText("S",x+cellW/2,y+112)}
+      else if(s==="N"){ctx.fillStyle="#111111";ctx.fillText("N",x+cellW/2,y+112)}
       else if(s==="X"){ctx.fillStyle=red;ctx.fillText("X",x+cellW/2,y+112)}
       else if(s==="-"){ctx.fillStyle=gray;ctx.fillText("-",x+cellW/2,y+112)}
       else if(s==="FB"){ctx.fillStyle=blue;ctx.font="bold 42px system-ui,-apple-system,sans-serif";ctx.fillText("FB",x+cellW/2,y+112)}
@@ -496,3 +496,38 @@ async function rangePdfV11(){
 }
 $("sharePdfBtn").onclick=async()=>{const s=$("shareStatusV11");try{s.textContent="PDF wird erstellt …";const f=await rangePdfV11();if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({title:"Dienstpläne",files:[f]});s.textContent=""}else s.textContent="Direktes Teilen nicht möglich. Nutze „PDF speichern“."}catch(e){if(e?.name!=="AbortError")s.textContent="PDF konnte nicht geteilt werden.";else s.textContent=""}};
 $("savePdfBtn").onclick=async()=>{const s=$("shareStatusV11");s.textContent="PDF wird erstellt …";const f=await rangePdfV11(),u=URL.createObjectURL(f),a=document.createElement("a");a.href=u;a.download=f.name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1200);s.textContent="PDF wurde erstellt."};
+
+
+// ===== V14: Jahresansicht startet beim aktuellen Monat =====
+function focusCurrentMonthInYear(){
+  const now=new Date();
+
+  // Beim Wechsel auf "Jahr" immer das aktuelle Jahr anzeigen.
+  currentYear=now.getFullYear();
+  if(document.getElementById("yearSelect")){
+    document.getElementById("yearSelect").value=currentYear;
+  }
+
+  if(typeof renderYear==="function") renderYear();
+  if(typeof renderSummary==="function") renderSummary(now);
+
+  setTimeout(()=>{
+    const month=document.querySelector(`#yearView .month[data-month="${now.getMonth()}"]`);
+    const today=document.querySelector(`#yearView [data-date="${iso(now)}"]`);
+
+    // Aktuellen Monat oben in den sichtbaren Bereich bringen.
+    (month||today)?.scrollIntoView({
+      behavior:"auto",
+      block:"start"
+    });
+  },60);
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  const yearTab=document.querySelector('.tab[data-view="year"]');
+  if(yearTab){
+    yearTab.addEventListener("click",()=>{
+      setTimeout(focusCurrentMonthInYear,0);
+    });
+  }
+});

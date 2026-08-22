@@ -414,3 +414,38 @@ body.installed-app .month-large .weekdays div{padding:3px 1px;font-size:.64rem}b
 .generic-copy{margin:0;padding:13px;border-radius:13px;background:#f7f9fb;color:#5f6b76;font-size:.78rem;line-height:1.45}
 .privacy-note{text-align:center;margin:13px 0 0;color:#8a949d;font-size:.64rem}
 @media(max-width:420px){.install-gate{padding-left:9px;padding-right:9px}.install-gate-card{padding:14px;border-radius:20px}.install-intro{padding-top:14px}.pro-steps li{padding:9px}.step-copy p{font-size:.72rem}}
+
+/* V13 */
+.install-gate{min-height:100dvh;padding:max(16px,env(safe-area-inset-top)) 12px max(20px,env(safe-area-inset-bottom));background:#f2f5f8;color:#17202a}
+.install-gate-card{width:min(620px,100%);margin:auto;background:#fff;border:1px solid #e1e7ed;border-radius:25px;padding:18px;box-shadow:0 16px 44px rgba(22,48,75,.09)}
+.install-brand{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #e8edf2}.install-brand .install-logo{width:56px;height:56px;flex:0 0 56px;margin:0;border-radius:14px;background:#173f69;color:#fff;display:grid;place-items:center;font:900 36px/1 system-ui}.install-brand h1{margin:0;text-align:left;color:#173f69;font-size:1.45rem}.install-brand p{margin:3px 0 0;color:#71808d;font-size:.75rem}
+.install-intro{padding:16px 2px}.install-intro h2{margin:0 0 5px;font-size:1.12rem}.install-intro p{margin:0;color:#65727e;font-size:.8rem;line-height:1.45}
+.platform-section{margin-top:4px;padding-top:14px;border-top:1px solid #e5ebf0}.platform-section+.platform-section{margin-top:18px}.platform-heading{display:flex;align-items:center;gap:10px;margin-bottom:10px}.platform-heading>span{width:38px;height:36px;border-radius:10px;display:grid;place-items:center;background:#173f69;color:#fff;font-size:.7rem;font-weight:900}.platform-heading h3{margin:0;color:#173f69;font-size:1.03rem}.platform-heading p{margin:1px 0 0;color:#7b8791;font-size:.68rem}
+.instruction-list{display:grid;gap:8px}.instruction-card{display:grid;grid-template-columns:29px 1fr;gap:9px;padding:11px;background:#f8fafb;border:1px solid #e2e8ed;border-radius:14px}.instruction-no{width:27px;height:27px;border-radius:50%;display:grid;place-items:center;background:#e3edf7;color:#173f69;font-size:.75rem;font-weight:900}.instruction-card h4{margin:1px 0 3px;font-size:.86rem}.instruction-card p{margin:0;color:#65717c;font-size:.73rem;line-height:1.4}
+.safari-toolbar-img{display:block;width:100%;margin-top:9px;border-radius:15px;background:#f4f5f7}.ios-menu-row,.android-menu-row{display:flex;align-items:center;gap:10px;margin-top:9px;padding:10px 12px;border-radius:12px;background:#fff;border:1px solid #dfe5ea;font-size:.78rem}.ios-plus{width:25px;height:25px;border:2px solid #20262c;border-radius:7px;display:grid;place-items:center;font-size:1.05rem}.ios-add-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:9px;padding:10px 12px;border-radius:12px;background:#fff;border:1px solid #dfe5ea;font-size:.73rem}.ios-add-bar b{color:#087ff5;font-size:.79rem}.android-menu-row span{width:25px;height:25px;border-radius:7px;display:grid;place-items:center;background:#e6eff8;color:#173f69;font-size:1rem;font-weight:900}
+.direct-install-btn{width:100%;margin-top:9px;min-height:43px;border:0;border-radius:11px;background:#173f69;color:#fff;font-weight:850}.install-finish{display:flex;gap:9px;align-items:center;margin-top:16px;padding:11px 12px;border-radius:14px;background:#edf6ef;border:1px solid #d6e9da;color:#285f35}.install-finish>span{width:27px;height:27px;border-radius:50%;display:grid;place-items:center;background:#317a42;color:#fff;font-weight:900}.install-finish strong{display:block;font-size:.82rem}.install-finish p{margin:2px 0 0;font-size:.7rem;line-height:1.35}
+@media(max-width:420px){.install-gate{padding-left:8px;padding-right:8px}.install-gate-card{padding:14px;border-radius:21px}.instruction-card{padding:9px}.safari-toolbar-img{border-radius:12px}}
+
+/* ===== V14: Früh / Spät / Nacht neutral schwarz ===== */
+.shift-F,
+.shift-S,
+.shift-N,
+.single-group-day .shift-F,
+.single-group-day .shift-S,
+.single-group-day .shift-N{
+  color:#111 !important;
+}
+
+/* Agenda: F / S / N schwarz, Sonderkennzeichen behalten ihre Farben */
+.shift-agenda .ag-f,
+.shift-agenda .ag-s,
+.shift-agenda .ag-n{
+  color:#111 !important;
+}
+
+/* Aktueller Tag auch in der Jahresübersicht deutlich gelb */
+#yearView .day.today,
+.calendar .day.today{
+  background:#fff0a8 !important;
+  box-shadow:inset 0 0 0 2px #e0b93c !important;
+}
