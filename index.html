@@ -25,12 +25,12 @@
   </header>
 
   <main>
+    <div class="simple-mode-hint">Einfach auswählen, Monat öffnen, fertig.</div>
     <nav class="tabs" aria-label="Ansicht">
       <button class="tab active" data-view="year">Jahr</button>
       <button class="tab" data-view="month">Monat</button>
       <button class="tab" data-view="mine">Übersicht</button>
       <button id="installTab" class="tab" data-view="install">Als App nutzen</button>
-      <button class="tab" data-view="settings">Einstellungen</button>
     </nav>
 
     <section class="toolbar card">
@@ -104,110 +104,6 @@
           </ol>
           <button id="androidInstallBtn" class="install-action" hidden>App jetzt installieren</button>
         </article>
-      </div>
-    </section>
-
-
-    <section id="settingsView" class="view">
-      <div class="settings-wrap">
-        <div class="card settings-card">
-          <h2>Anzeige</h2>
-
-          <label class="setting-row">
-            <span>
-              <b>Startansicht</b>
-              <small>Wähle, was beim Öffnen angezeigt wird.</small>
-            </span>
-            <select id="startViewSetting">
-              <option value="month">Aktueller Monat</option>
-              <option value="year">Jahresübersicht</option>
-              <option value="mine">Übersicht</option>
-            </select>
-          </label>
-
-          <label class="setting-row">
-            <span>
-              <b>Aktuellen Tag hervorheben</b>
-              <small>Heute bleibt gelb markiert.</small>
-            </span>
-            <input id="highlightTodaySetting" type="checkbox" checked>
-          </label>
-
-          <label class="setting-row">
-            <span>
-              <b>Wochenende leicht hinterlegen</b>
-              <small>Samstag und Sonntag etwas absetzen.</small>
-            </span>
-            <input id="weekendSetting" type="checkbox" checked>
-          </label>
-
-          <label class="setting-row">
-            <span>
-              <b>Große Schrift im Monatskalender</b>
-              <small>F, S, N, X, -, FB etwas größer darstellen.</small>
-            </span>
-            <input id="largeTextSetting" type="checkbox">
-          </label>
-        </div>
-
-        <div class="card settings-card">
-          <h2>Bedienung</h2>
-
-          <label class="setting-row">
-            <span>
-              <b>Ansicht merken</b>
-              <small>Beim nächsten Öffnen dieselbe Dienstgruppe beibehalten.</small>
-            </span>
-            <input id="rememberGroupSetting" type="checkbox" checked>
-          </label>
-
-          <label class="setting-row">
-            <span>
-              <b>Wischwechsel im Monat</b>
-              <small>Nach links/rechts wischen für nächsten/vorherigen Monat.</small>
-            </span>
-            <input id="swipeSetting" type="checkbox" checked>
-          </label>
-
-          <label class="setting-row">
-            <span>
-              <b>Reduzierte Bewegung</b>
-              <small>Animationen und sanftes Scrollen reduzieren.</small>
-            </span>
-            <input id="reducedMotionSetting" type="checkbox">
-          </label>
-        </div>
-
-        <div class="card settings-card">
-          <h2>Darstellung</h2>
-
-          <label class="setting-row">
-            <span>
-              <b>Dunkler Modus</b>
-              <small>Für Nachtdienst und dunkle Umgebung.</small>
-            </span>
-            <select id="themeSetting">
-              <option value="system">System</option>
-              <option value="light">Hell</option>
-              <option value="dark">Dunkel</option>
-            </select>
-          </label>
-
-          <label class="setting-row">
-            <span>
-              <b>Kontrast verstärken</b>
-              <small>Kräftigere Linien und deutlichere Texte.</small>
-            </span>
-            <input id="contrastSetting" type="checkbox">
-          </label>
-        </div>
-
-        <div class="card settings-card">
-          <h2>Daten & Hilfe</h2>
-          <button id="resetSettingsBtn" class="settings-action">Einstellungen zurücksetzen</button>
-          <button id="reloadAppBtn" class="settings-action">App neu laden</button>
-          <p class="settings-note">Die App speichert diese Einstellungen nur lokal auf deinem Gerät.</p>
-        </div>
       </div>
     </section>
 

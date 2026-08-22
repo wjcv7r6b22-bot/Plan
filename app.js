@@ -167,7 +167,6 @@ function renderAll(){
   renderSummary();
 }
 function showView(name){
-  document.body.classList.toggle("month-fit", name==="month");
   document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
   document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.view===name));
   $(`${name}View`).classList.add("active");
@@ -254,154 +253,16 @@ document.addEventListener("DOMContentLoaded",()=>{
 });
 window.matchMedia("(display-mode: standalone)").addEventListener?.("change",updateInstallTab);
 
-
-// Beim Öffnen der App immer auf den aktuellen Monat springen
-// und den heutigen Tag sichtbar hervorheben.
 function openCurrentDayOnStart(){
   const today=new Date();
   currentYear=today.getFullYear();
   currentMonth=today.getMonth();
-
-  if(document.getElementById("yearSelect")) {
-    document.getElementById("yearSelect").value=currentYear;
-  }
-
+  if(document.getElementById("yearSelect")) document.getElementById("yearSelect").value=currentYear;
   if(typeof renderAll==="function") renderAll();
-  else {
-    if(typeof renderYear==="function") renderYear();
-    if(typeof renderMonth==="function") renderMonth();
-  }
-
-  if(typeof showView==="function") showView((window.dpSettings?.startView)||"month");
-  else document.body.classList.add("month-fit");
-
+  if(typeof showView==="function") showView("month");
   setTimeout(()=>{
     const el=document.querySelector(`[data-date="${iso(today)}"]`);
     if(el) el.scrollIntoView({behavior:"auto",block:"center"});
-  },80);
+  },60);
 }
-window.addEventListener("load", openCurrentDayOnStart);
-
-
-// ===== V4 Einstellungen =====
-const dpDefaults={
-  startView:"month",
-  highlightToday:true,
-  weekendTint:true,
-  largeMonthText:false,
-  rememberGroup:true,
-  swipe:true,
-  reducedMotion:false,
-  theme:"system",
-  contrast:false
-};
-let dpSettings={...dpDefaults,...JSON.parse(localStorage.getItem("dp.settings")||"{}")};
-window.dpSettings=dpSettings;
-
-function saveDpSettings(){
-  localStorage.setItem("dp.settings",JSON.stringify(dpSettings));
-}
-function applyTheme(){
-  const sysDark=window.matchMedia?.("(prefers-color-scheme: dark)").matches;
-  const dark=dpSettings.theme==="dark" || (dpSettings.theme==="system" && sysDark);
-  document.body.classList.toggle("dark-mode",dark);
-}
-function applyDpSettings(){
-  document.body.classList.toggle("no-weekend-tint",!dpSettings.weekendTint);
-  document.body.classList.toggle("no-today-highlight",!dpSettings.highlightToday);
-  document.body.classList.toggle("large-month-text",!!dpSettings.largeMonthText);
-  document.body.classList.toggle("reduce-motion",!!dpSettings.reducedMotion);
-  document.body.classList.toggle("high-contrast",!!dpSettings.contrast);
-  applyTheme();
-}
-function loadSettingsControls(){
-  const map={
-    startViewSetting:"startView",
-    highlightTodaySetting:"highlightToday",
-    weekendSetting:"weekendTint",
-    largeTextSetting:"largeMonthText",
-    rememberGroupSetting:"rememberGroup",
-    swipeSetting:"swipe",
-    reducedMotionSetting:"reducedMotion",
-    themeSetting:"theme",
-    contrastSetting:"contrast"
-  };
-  Object.entries(map).forEach(([id,key])=>{
-    const el=document.getElementById(id);
-    if(!el)return;
-    if(el.type==="checkbox") el.checked=!!dpSettings[key];
-    else el.value=dpSettings[key];
-    el.addEventListener("change",()=>{
-      dpSettings[key]=el.type==="checkbox"?el.checked:el.value;
-      saveDpSettings();
-      applyDpSettings();
-    });
-  });
-
-  document.getElementById("resetSettingsBtn")?.addEventListener("click",()=>{
-    dpSettings={...dpDefaults};
-    window.dpSettings=dpSettings;
-    saveDpSettings();
-    loadSettingsControls();
-    applyDpSettings();
-  });
-
-  document.getElementById("reloadAppBtn")?.addEventListener("click",()=>location.reload());
-}
-
-window.matchMedia?.("(prefers-color-scheme: dark)")?.addEventListener?.("change",()=>{
-  if(dpSettings.theme==="system") applyTheme();
-});
-
-// Gruppe nur dann merken, wenn aktiviert.
-const originalSetGroup=window.setGroup;
-if(typeof originalSetGroup==="function"){
-  window.setGroup=function(g){
-    selectedGroup=g;
-    if(dpSettings.rememberGroup) localStorage.setItem("dp.group",g);
-    else localStorage.removeItem("dp.group");
-    if(typeof renderAll==="function") renderAll();
-  };
-}
-
-// Wischgesten im Monatskalender.
-let dpTouchStartX=null, dpTouchStartY=null;
-function bindMonthSwipe(){
-  const el=document.getElementById("monthCalendar");
-  if(!el || el.dataset.swipeBound==="1") return;
-  el.dataset.swipeBound="1";
-  el.addEventListener("touchstart",e=>{
-    if(!dpSettings.swipe || e.touches.length!==1)return;
-    dpTouchStartX=e.touches[0].clientX;
-    dpTouchStartY=e.touches[0].clientY;
-  },{passive:true});
-  el.addEventListener("touchend",e=>{
-    if(!dpSettings.swipe || dpTouchStartX===null)return;
-    const t=e.changedTouches[0];
-    const dx=t.clientX-dpTouchStartX;
-    const dy=t.clientY-dpTouchStartY;
-    dpTouchStartX=dpTouchStartY=null;
-    if(Math.abs(dx)<55 || Math.abs(dx)<Math.abs(dy)*1.25)return;
-    if(dx<0){
-      if(currentMonth===11){currentMonth=0;currentYear++;}else currentMonth++;
-    }else{
-      if(currentMonth===0){currentMonth=11;currentYear--;}else currentMonth--;
-    }
-    if(typeof renderAll==="function") renderAll();
-    if(typeof showView==="function") showView("month");
-    bindMonthSwipe();
-  },{passive:true});
-}
-
-document.addEventListener("DOMContentLoaded",()=>{
-  applyDpSettings();
-  loadSettingsControls();
-  bindMonthSwipe();
-
-  // Falls Gruppenwahl nicht gemerkt werden soll, starte mit Alle Dienstgruppen.
-  if(!dpSettings.rememberGroup){
-    selectedGroup="ALL";
-    localStorage.removeItem("dp.group");
-    if(typeof renderAll==="function") renderAll();
-  }
-});
+window.addEventListener("load",openCurrentDayOnStart);

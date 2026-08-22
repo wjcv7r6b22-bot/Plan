@@ -1,21 +1,16 @@
-DIENSTPLAN APP V4 – FEINSCHLIFF
+DIENSTPLAN – EINFACH & EDEL
 
-Neue Einstellungen:
-- Startansicht wählen
-- aktuellen Tag hervorheben an/aus
-- Wochenend-Hinterlegung an/aus
-- größere Schrift im Monatskalender
-- Dienstgruppen-Auswahl merken
-- Wischwechsel zwischen Monaten
-- reduzierte Bewegung
-- Hell / Dunkel / System
-- verstärkter Kontrast
-- Einstellungen zurücksetzen
-- App neu laden
+Diese Version basiert auf der Version mit „Als App nutzen“.
 
-Weitere Verbesserungen:
-- größere Touch-Ziele
-- sichtbarer Tastatur-Fokus
-- PWA bleibt installierbar
-- aktueller Tag weiterhin automatisch im aktuellen Monat
-- bestehende Gesamt- und Einzelgruppenansicht bleibt erhalten
+Ziel:
+- so wenig Bedienung wie möglich
+- ruhige, hochwertige Optik
+- aktuelle Monatsansicht im Mittelpunkt
+- Gesamtansicht und Einzelgruppe bleiben erhalten
+- Reiter „Als App nutzen“ bleibt erhalten und verschwindet im installierten App-Modus
+- heutiger Tag wird gelb hervorgehoben
+- klare, große Touch-Flächen
+- reduzierte visuelle Unruhe
+
+GitHub:
+Alle enthaltenen Dateien hochladen und vorhandene Dateien ersetzen.

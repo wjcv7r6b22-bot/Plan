@@ -74,380 +74,226 @@
   .install-card img{border-radius:10px}
 }
 
-/* Aktueller Tag: deutlich gelb hervorheben */
-.day.today{
-  background:#fff2b8 !important;
-}
-.month-large .day.today{
-  background:#fff0a8 !important;
-  box-shadow: inset 0 0 0 3px #e0b93c;
-}
-
-/* =========================================================
-   VOLLbild-Monatsansicht auf Smartphones
-   Ziel: kompletter Monat ohne Zoomen oder vertikales Scrollen.
-   ========================================================= */
-@media (max-width: 760px) {
-  html, body { width:100%; max-width:100%; }
-
-  body.month-fit {
-    height:100dvh;
-    min-height:100dvh;
-    overflow:hidden;
-    background:var(--bg);
-  }
-
-  body.month-fit .app-header{
-    position:relative;
-    top:auto;
-    height:auto;
-    min-height:0;
-    padding:
-      max(6px, env(safe-area-inset-top))
-      10px
-      6px;
-    gap:8px;
-    box-shadow:none;
-  }
-
-  body.month-fit .app-header h1{
-    font-size:clamp(1.15rem,5vw,1.55rem);
-    line-height:1.05;
-  }
-
-  body.month-fit .subtitle{
-    display:block;
-    font-size:clamp(.66rem,2.7vw,.8rem);
-    line-height:1.05;
-    margin-top:2px;
-  }
-
-  body.month-fit .header-actions{ gap:5px; }
-
-  body.month-fit .year-controls{ gap:4px; }
-
-  body.month-fit .year-controls select,
-  body.month-fit .icon-btn{
-    height:34px;
-    min-height:34px;
-    border-radius:9px;
-    padding:0 9px;
-    font-size:.9rem;
-  }
-
-  body.month-fit main{
-    height:calc(100dvh - 60px - env(safe-area-inset-top));
-    max-width:none;
-    margin:0;
-    padding:4px 6px max(4px, env(safe-area-inset-bottom));
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
-  }
-
-  /* Tabs compact but still fully visible */
-  body.month-fit .tabs{
-    position:relative;
-    top:auto;
-    flex:0 0 auto;
-    display:flex;
-    gap:4px;
-    margin:0 0 4px;
-    padding:0;
-    overflow-x:auto;
-    overflow-y:hidden;
-    scrollbar-width:none;
-    background:transparent;
-  }
-  body.month-fit .tabs::-webkit-scrollbar{ display:none; }
-
-  body.month-fit .tab{
-    flex:0 0 auto;
-    min-width:auto;
-    border-radius:8px;
-    padding:6px 8px;
-    font-size:clamp(.62rem,2.6vw,.74rem);
-    line-height:1;
-  }
-
-  /* Only the active month view occupies remaining height */
-  body.month-fit #monthView.active{
-    display:flex;
-    flex-direction:column;
-    flex:1 1 auto;
-    min-height:0;
-    overflow:hidden;
-  }
-
-  /* Year/month navigation much smaller */
-  body.month-fit .month-nav{
-    flex:0 0 auto;
-    grid-template-columns:38px 1fr 38px;
-    min-height:38px;
-    margin:0 0 4px;
-    padding:3px 4px;
-    border-radius:10px;
-    box-shadow:none;
-  }
-
-  body.month-fit .month-nav h2{
-    font-size:clamp(1.05rem,5.2vw,1.38rem);
-    line-height:1;
-  }
-
-  body.month-fit .month-nav .icon-btn{
-    width:34px;
-    height:32px;
-    min-height:32px;
-    padding:0;
-    font-size:1.15rem;
-  }
-
-  /* Calendar fills all remaining vertical space */
-  body.month-fit .month-large{
-    flex:1 1 auto;
-    min-height:0;
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
-    border-radius:10px;
-    box-shadow:none;
-  }
-
-  body.month-fit .month-large .weekdays{
-    flex:0 0 24px;
-    display:grid;
-    grid-template-columns:repeat(7,minmax(0,1fr));
-  }
-
-  body.month-fit .month-large .weekdays div{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:0;
-    font-size:clamp(.60rem,2.8vw,.78rem);
-    line-height:1;
-  }
-
-  body.month-fit .month-large .days{
-    flex:1 1 auto;
-    min-height:0;
-    display:grid;
-    grid-template-columns:repeat(7,minmax(0,1fr));
-    grid-template-rows:repeat(6,minmax(0,1fr));
-  }
-
-  body.month-fit .month-large .day{
-    min-height:0 !important;
-    height:auto;
-    padding:2px 2px;
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-start;
-  }
-
-  body.month-fit .month-large .day.empty{ min-height:0 !important; }
-
-  body.month-fit .month-large .num{
-    align-self:flex-start;
-    font-size:clamp(.66rem,3.2vw,.88rem);
-    line-height:1;
-    margin-bottom:1px;
-  }
-
-  /* Einzelgruppenansicht: nur ein großes Kürzel */
-  body.month-fit .month-large .single-group-day .single-shift,
-  body.month-fit .month-large .single-group-day .single-status{
-    flex:1 1 auto;
-    min-height:0 !important;
-    width:100%;
-    margin:0 !important;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:clamp(.92rem,5vw,1.35rem);
-    line-height:1;
-  }
-
-  /* Gesamtansicht bleibt lesbar, aber kompakt */
-  body.month-fit .month-large .work{
-    font-size:clamp(.70rem,3.6vw,.96rem);
-    line-height:1.05;
-    margin-top:2px;
-    letter-spacing:0;
-    white-space:nowrap;
-  }
-
-  body.month-fit .month-large .status{
-    font-size:clamp(.48rem,2.2vw,.62rem);
-    line-height:1.05;
-    margin-top:2px;
-    white-space:nowrap;
-  }
-
-  body.month-fit .month-large .day.today{
-    background:#fff0a8 !important;
-    box-shadow:inset 0 0 0 2px #e0b93c;
-  }
-
-  /* Other views can still scroll normally */
-  body:not(.month-fit){ overflow:auto; }
-}
-
-/* ===== V4 Einstellungen & Feinschliff ===== */
+/* ===== Edle, einfache Bedienung ===== */
 :root{
-  --focus:#0a84ff;
+  --navy:#173b63;
+  --navy-soft:#254c75;
+  --surface:#ffffff;
+  --bg:#f5f7fa;
+  --line:#d9e1e8;
+  --muted:#6f7780;
+  --shadow:0 8px 24px rgba(16,42,67,.08);
 }
-button, select, input{
-  min-height:44px;
+
+body{
+  background:var(--bg);
 }
-button:focus-visible, select:focus-visible, input:focus-visible{
-  outline:3px solid var(--focus);
-  outline-offset:2px;
+
+.app-header{
+  background:linear-gradient(135deg,var(--navy),var(--navy-soft));
+  box-shadow:none;
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
-.tabs .tab{
-  min-height:44px;
+
+.simple-mode-hint{
+  display:none;
 }
-.day[data-date]{
-  touch-action:manipulation;
+
+.card,
+.month,
+.month-large{
+  box-shadow:var(--shadow);
+  border:1px solid #e8edf2;
 }
-.settings-wrap{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px;
+
+.tabs{
+  gap:8px;
 }
-.settings-card{
-  padding:16px;
+
+.tab{
+  background:#e9eef3;
+  color:#28323c;
+  border-radius:12px;
+  transition:.18s ease;
 }
-.settings-card h2{
-  margin:0 0 8px;
-  color:#173b63;
+
+.tab.active{
+  background:var(--navy);
+  color:white;
+  box-shadow:0 4px 12px rgba(23,59,99,.18);
 }
-.setting-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:14px;
-  padding:12px 0;
-  border-bottom:1px solid #dfe5ea;
+
+.toolbar{
+  gap:10px;
 }
-.setting-row:last-child{border-bottom:0}
-.setting-row span{
-  display:grid;
-  gap:3px;
+
+.toolbar label{
+  color:#5f6872;
 }
-.setting-row small{
-  color:#6c7580;
-  line-height:1.3;
-}
-.setting-row select{
-  min-width:150px;
-  border:1px solid #cbd4dd;
-  border-radius:9px;
+
+.toolbar select,
+.toolbar input,
+.toolbar button{
   background:#fff;
-  padding:0 10px;
+  border:1px solid var(--line);
+  border-radius:11px;
 }
-.setting-row input[type="checkbox"]{
-  width:24px;
-  height:24px;
-  min-height:24px;
-  accent-color:#173b63;
-}
-.settings-action{
-  width:100%;
-  border:1px solid #cbd4dd;
-  border-radius:10px;
+
+.toolbar button{
+  color:#1d6fd7;
   background:#fff;
-  color:#173b63;
-  font-weight:800;
-  padding:10px 12px;
-  margin-top:8px;
 }
-.settings-note{
-  color:#6c7580;
-  font-size:.9rem;
-  line-height:1.4;
+
+.month h3,
+.month-nav h2{
+  color:var(--navy);
 }
-body.dark-mode{
-  background:#0f141a;
-  color:#f5f7fa;
+
+.month{
+  overflow:hidden;
 }
-body.dark-mode .card,
-body.dark-mode .month-large,
-body.dark-mode .month,
-body.dark-mode .toolbar,
-body.dark-mode .settings-action,
-body.dark-mode .setting-row select{
-  background:#182029;
-  color:#f5f7fa;
+
+.day{
+  background:#fff;
 }
-body.dark-mode .month h3,
-body.dark-mode .month-nav h2,
-body.dark-mode .settings-card h2{
-  color:#d8ebff;
+
+.day.today{
+  background:#fff0b3 !important;
 }
-body.dark-mode .weekdays div{
-  background:#242d36;
-  color:#f1f4f7;
+
+.day.weekend{
+  background:#fbfcfd;
 }
-body.dark-mode .day{
-  background:#182029;
-  color:#f5f7fa;
+
+.work{
+  letter-spacing:.01em;
 }
-body.dark-mode .day.weekend{
-  background:#202932;
+
+.status{
+  opacity:.96;
 }
-body.dark-mode .setting-row{
-  border-color:#34414d;
+
+.x{
+  color:#c62828;
 }
-body.dark-mode .setting-row small,
-body.dark-mode .settings-note{
-  color:#a8b2bc;
+
+.fb{
+  color:#315e8a;
 }
-body.dark-mode .setting-row select,
-body.dark-mode .settings-action{
-  border-color:#43515f;
+
+.month-nav{
+  box-shadow:var(--shadow);
 }
-body.high-contrast .day,
-body.high-contrast .weekdays div,
-body.high-contrast .month-large,
-body.high-contrast .month{
-  border-color:#7d8a96 !important;
+
+.month-nav .icon-btn{
+  background:#eef2f6;
+  color:#0d7df2;
 }
-body.high-contrast .work,
-body.high-contrast .single-shift,
-body.high-contrast .single-status,
-body.high-contrast .num{
-  font-weight:950 !important;
+
+.install-card{
+  box-shadow:var(--shadow);
 }
-body.no-weekend-tint .day.weekend{
-  background:inherit !important;
+
+.install-card h2{
+  color:var(--navy);
 }
-body.no-today-highlight .day.today{
-  background:inherit !important;
-  box-shadow:none !important;
-}
-body.large-month-text .month-large .single-group-day .single-shift,
-body.large-month-text .month-large .single-group-day .single-status{
-  font-size:clamp(1.15rem,5.8vw,1.55rem) !important;
-}
-body.reduce-motion *,
-body.reduce-motion *::before,
-body.reduce-motion *::after{
-  scroll-behavior:auto !important;
-  transition:none !important;
-  animation:none !important;
-}
+
 @media(max-width:760px){
-  .settings-wrap{grid-template-columns:1fr}
-  .settings-card{padding:12px}
-  .setting-row{
-    align-items:flex-start;
+  .simple-mode-hint{
+    display:block;
+    margin:2px 2px 8px;
+    color:#75808b;
+    font-size:.76rem;
+    text-align:center;
   }
-  .setting-row select{min-width:130px}
+
+  .app-header{
+    padding:
+      max(8px, env(safe-area-inset-top))
+      12px
+      8px;
+  }
+
+  .app-header h1{
+    font-size:1.35rem;
+  }
+
+  .subtitle{
+    display:block;
+    font-size:.78rem;
+    opacity:.82;
+  }
+
+  .tabs{
+    display:flex;
+    overflow-x:auto;
+    scrollbar-width:none;
+    gap:6px;
+    padding:0 2px 6px;
+  }
+
+  .tabs::-webkit-scrollbar{display:none}
+
+  .tab{
+    flex:0 0 auto;
+    padding:9px 12px;
+    font-size:.78rem;
+  }
+
+  .toolbar{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    padding:10px;
+    gap:8px;
+  }
+
+  .toolbar label{
+    min-width:0;
+  }
+
+  .toolbar button{
+    min-height:42px;
+  }
+
+  .toolbar button:nth-last-child(1){
+    grid-column:auto;
+  }
+
+  .month-large,
+  .month{
+    border-radius:14px;
+  }
+
+  .month-nav{
+    border-radius:14px;
+    padding:6px;
+  }
+
+  .month-nav h2{
+    font-size:1.25rem;
+  }
+
+  .month-large .weekdays div{
+    font-size:.73rem;
+  }
+
+  .month-large .num{
+    font-size:.92rem;
+  }
+
+  .month-large .single-group-day .single-shift,
+  .month-large .single-group-day .single-status{
+    font-size:1.2rem;
+  }
+
+  .install-grid{
+    gap:10px;
+  }
+
+  .install-card{
+    border-radius:14px;
+  }
 }
-@media(prefers-reduced-motion:reduce){
-  *{scroll-behavior:auto}
-}
+
+/* App mode: no install tab is already handled by JS.
+   Keep the interface visually quiet and focused. */
