@@ -19,3 +19,9 @@ Funktionen:
 
 Hinweis:
 Für Installation wie eine App sollte der Ordner über HTTPS bereitgestellt werden (z. B. GitHub Pages, Netlify oder Vercel). Danach kann die Seite auf dem Smartphone zum Startbildschirm hinzugefügt werden.
+
+
+V2.1 NEU:
+- Umschalter 'Alle Dienstgruppen' / 'Nur meine Dienstgruppe'
+- Gesamtansicht bleibt unverändert
+- In 'Nur meine Dienstgruppe' wird ausschließlich die gewählte Gruppe angezeigt.
