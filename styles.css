@@ -73,3 +73,225 @@
   .install-card{padding:12px}
   .install-card img{border-radius:10px}
 }
+
+/* Aktueller Tag: deutlich gelb hervorheben */
+.day.today{
+  background:#fff2b8 !important;
+}
+.month-large .day.today{
+  background:#fff0a8 !important;
+  box-shadow: inset 0 0 0 3px #e0b93c;
+}
+
+/* =========================================================
+   VOLLbild-Monatsansicht auf Smartphones
+   Ziel: kompletter Monat ohne Zoomen oder vertikales Scrollen.
+   ========================================================= */
+@media (max-width: 760px) {
+  html, body { width:100%; max-width:100%; }
+
+  body.month-fit {
+    height:100dvh;
+    min-height:100dvh;
+    overflow:hidden;
+    background:var(--bg);
+  }
+
+  body.month-fit .app-header{
+    position:relative;
+    top:auto;
+    height:auto;
+    min-height:0;
+    padding:
+      max(6px, env(safe-area-inset-top))
+      10px
+      6px;
+    gap:8px;
+    box-shadow:none;
+  }
+
+  body.month-fit .app-header h1{
+    font-size:clamp(1.15rem,5vw,1.55rem);
+    line-height:1.05;
+  }
+
+  body.month-fit .subtitle{
+    display:block;
+    font-size:clamp(.66rem,2.7vw,.8rem);
+    line-height:1.05;
+    margin-top:2px;
+  }
+
+  body.month-fit .header-actions{ gap:5px; }
+
+  body.month-fit .year-controls{ gap:4px; }
+
+  body.month-fit .year-controls select,
+  body.month-fit .icon-btn{
+    height:34px;
+    min-height:34px;
+    border-radius:9px;
+    padding:0 9px;
+    font-size:.9rem;
+  }
+
+  body.month-fit main{
+    height:calc(100dvh - 60px - env(safe-area-inset-top));
+    max-width:none;
+    margin:0;
+    padding:4px 6px max(4px, env(safe-area-inset-bottom));
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+
+  /* Tabs compact but still fully visible */
+  body.month-fit .tabs{
+    position:relative;
+    top:auto;
+    flex:0 0 auto;
+    display:flex;
+    gap:4px;
+    margin:0 0 4px;
+    padding:0;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scrollbar-width:none;
+    background:transparent;
+  }
+  body.month-fit .tabs::-webkit-scrollbar{ display:none; }
+
+  body.month-fit .tab{
+    flex:0 0 auto;
+    min-width:auto;
+    border-radius:8px;
+    padding:6px 8px;
+    font-size:clamp(.62rem,2.6vw,.74rem);
+    line-height:1;
+  }
+
+  /* Only the active month view occupies remaining height */
+  body.month-fit #monthView.active{
+    display:flex;
+    flex-direction:column;
+    flex:1 1 auto;
+    min-height:0;
+    overflow:hidden;
+  }
+
+  /* Year/month navigation much smaller */
+  body.month-fit .month-nav{
+    flex:0 0 auto;
+    grid-template-columns:38px 1fr 38px;
+    min-height:38px;
+    margin:0 0 4px;
+    padding:3px 4px;
+    border-radius:10px;
+    box-shadow:none;
+  }
+
+  body.month-fit .month-nav h2{
+    font-size:clamp(1.05rem,5.2vw,1.38rem);
+    line-height:1;
+  }
+
+  body.month-fit .month-nav .icon-btn{
+    width:34px;
+    height:32px;
+    min-height:32px;
+    padding:0;
+    font-size:1.15rem;
+  }
+
+  /* Calendar fills all remaining vertical space */
+  body.month-fit .month-large{
+    flex:1 1 auto;
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    border-radius:10px;
+    box-shadow:none;
+  }
+
+  body.month-fit .month-large .weekdays{
+    flex:0 0 24px;
+    display:grid;
+    grid-template-columns:repeat(7,minmax(0,1fr));
+  }
+
+  body.month-fit .month-large .weekdays div{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+    font-size:clamp(.60rem,2.8vw,.78rem);
+    line-height:1;
+  }
+
+  body.month-fit .month-large .days{
+    flex:1 1 auto;
+    min-height:0;
+    display:grid;
+    grid-template-columns:repeat(7,minmax(0,1fr));
+    grid-template-rows:repeat(6,minmax(0,1fr));
+  }
+
+  body.month-fit .month-large .day{
+    min-height:0 !important;
+    height:auto;
+    padding:2px 2px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+  }
+
+  body.month-fit .month-large .day.empty{ min-height:0 !important; }
+
+  body.month-fit .month-large .num{
+    align-self:flex-start;
+    font-size:clamp(.66rem,3.2vw,.88rem);
+    line-height:1;
+    margin-bottom:1px;
+  }
+
+  /* Einzelgruppenansicht: nur ein großes Kürzel */
+  body.month-fit .month-large .single-group-day .single-shift,
+  body.month-fit .month-large .single-group-day .single-status{
+    flex:1 1 auto;
+    min-height:0 !important;
+    width:100%;
+    margin:0 !important;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:clamp(.92rem,5vw,1.35rem);
+    line-height:1;
+  }
+
+  /* Gesamtansicht bleibt lesbar, aber kompakt */
+  body.month-fit .month-large .work{
+    font-size:clamp(.70rem,3.6vw,.96rem);
+    line-height:1.05;
+    margin-top:2px;
+    letter-spacing:0;
+    white-space:nowrap;
+  }
+
+  body.month-fit .month-large .status{
+    font-size:clamp(.48rem,2.2vw,.62rem);
+    line-height:1.05;
+    margin-top:2px;
+    white-space:nowrap;
+  }
+
+  body.month-fit .month-large .day.today{
+    background:#fff0a8 !important;
+    box-shadow:inset 0 0 0 2px #e0b93c;
+  }
+
+  /* Other views can still scroll normally */
+  body:not(.month-fit){ overflow:auto; }
+}

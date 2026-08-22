@@ -167,6 +167,7 @@ function renderAll(){
   renderSummary();
 }
 function showView(name){
+  document.body.classList.toggle("month-fit", name==="month");
   document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
   document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.view===name));
   $(`${name}View`).classList.add("active");
@@ -252,3 +253,31 @@ document.addEventListener("DOMContentLoaded",()=>{
   };
 });
 window.matchMedia("(display-mode: standalone)").addEventListener?.("change",updateInstallTab);
+
+
+// Beim Öffnen der App immer auf den aktuellen Monat springen
+// und den heutigen Tag sichtbar hervorheben.
+function openCurrentDayOnStart(){
+  const today=new Date();
+  currentYear=today.getFullYear();
+  currentMonth=today.getMonth();
+
+  if(document.getElementById("yearSelect")) {
+    document.getElementById("yearSelect").value=currentYear;
+  }
+
+  if(typeof renderAll==="function") renderAll();
+  else {
+    if(typeof renderYear==="function") renderYear();
+    if(typeof renderMonth==="function") renderMonth();
+  }
+
+  if(typeof showView==="function") showView("month");
+  else document.body.classList.add("month-fit");
+
+  setTimeout(()=>{
+    const el=document.querySelector(`[data-date="${iso(today)}"]`);
+    if(el) el.scrollIntoView({behavior:"auto",block:"center"});
+  },80);
+}
+window.addEventListener("load", openCurrentDayOnStart);

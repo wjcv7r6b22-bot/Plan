@@ -25,3 +25,18 @@ NEU:
 - Anleitung für iPhone und Android mit einfachen Bildern
 - Android kann bei unterstützten Browsern direkt eine Installations-Schaltfläche anzeigen
 - Sobald die App vom Home-Bildschirm/Startbildschirm im Standalone-Modus geöffnet wird, verschwindet der Reiter automatisch
+
+
+NEU:
+- Beim Öffnen der App wird automatisch der aktuelle Monat angezeigt.
+- Der heutige Tag wird gelb hervorgehoben.
+- Der Kalender springt beim Start automatisch zum aktuellen Tag.
+
+
+NEU – VOLLBILD:
+- Monatsansicht passt sich automatisch an die Bildschirmhöhe an.
+- Der komplette Monat ist auf dem Smartphone ohne Zoomen sichtbar.
+- Kein vertikales Scrollen in der Monatsansicht.
+- Kopfzeile, Navigation, Wochentage und Tagesfelder skalieren einheitlich.
+- Der heutige Tag bleibt gelb hervorgehoben.
+- Andere Ansichten dürfen weiterhin normal scrollen.
