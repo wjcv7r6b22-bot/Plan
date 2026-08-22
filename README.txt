@@ -1,11 +1,10 @@
-DIENSTPLAN V14
+DIENSTPLAN V15
 
-Änderungen:
-- Frühdienst (F), Spätdienst (S) und Nachtdienst (N) werden in der Einzelgruppenansicht schwarz dargestellt.
-- Die Agenda zeigt F, S und N ebenfalls schwarz.
-- FB bleibt blau, X bleibt rot und „-“ bleibt grau.
-- Exportierte bzw. geteilte Dienstpläne verwenden F, S und N ebenfalls schwarz.
-- Beim Öffnen der Jahresansicht springt die App automatisch zum aktuellen Monat.
-- Der heutige Tag wird auch in der Jahresübersicht gelb hervorgehoben.
+Jahresansicht:
+- Beim Tippen auf „Jahr“ wird das aktuelle Jahr geöffnet.
+- Der aktuelle Monat steht direkt oben im sichtbaren Bereich.
+- Frühere Monate bleiben oberhalb und sind durch Hochscrollen erreichbar.
+- Folgemonate stehen darunter.
+- Der heutige Tag bleibt gelb markiert.
 
-Alle bisherigen Funktionen aus V13 bleiben erhalten.
+Alle übrigen Funktionen aus V14 bleiben erhalten.

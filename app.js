@@ -498,36 +498,35 @@ $("sharePdfBtn").onclick=async()=>{const s=$("shareStatusV11");try{s.textContent
 $("savePdfBtn").onclick=async()=>{const s=$("shareStatusV11");s.textContent="PDF wird erstellt …";const f=await rangePdfV11(),u=URL.createObjectURL(f),a=document.createElement("a");a.href=u;a.download=f.name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1200);s.textContent="PDF wurde erstellt."};
 
 
-// ===== V14: Jahresansicht startet beim aktuellen Monat =====
+// ===== V15: Jahresansicht beginnt beim aktuellen Monat =====
 function focusCurrentMonthInYear(){
   const now=new Date();
 
-  // Beim Wechsel auf "Jahr" immer das aktuelle Jahr anzeigen.
   currentYear=now.getFullYear();
-  if(document.getElementById("yearSelect")){
-    document.getElementById("yearSelect").value=currentYear;
-  }
+  const yearSelect=document.getElementById("yearSelect");
+  if(yearSelect) yearSelect.value=String(currentYear);
 
   if(typeof renderYear==="function") renderYear();
   if(typeof renderSummary==="function") renderSummary(now);
 
   setTimeout(()=>{
-    const month=document.querySelector(`#yearView .month[data-month="${now.getMonth()}"]`);
-    const today=document.querySelector(`#yearView [data-date="${iso(now)}"]`);
+    const months=document.querySelectorAll("#yearView .month");
+    const target=months[now.getMonth()];
+    if(!target) return;
 
-    // Aktuellen Monat oben in den sichtbaren Bereich bringen.
-    (month||today)?.scrollIntoView({
-      behavior:"auto",
-      block:"start"
-    });
-  },60);
+    const header=document.querySelector(".app-header");
+    const tabs=document.querySelector(".tabs");
+    const headerH=header ? header.getBoundingClientRect().height : 0;
+    const tabsH=tabs ? tabs.getBoundingClientRect().height : 0;
+    const targetY=window.scrollY+target.getBoundingClientRect().top-headerH-tabsH-8;
+
+    window.scrollTo({top:Math.max(0,targetY),behavior:"auto"});
+  },100);
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
   const yearTab=document.querySelector('.tab[data-view="year"]');
   if(yearTab){
-    yearTab.addEventListener("click",()=>{
-      setTimeout(focusCurrentMonthInYear,0);
-    });
+    yearTab.addEventListener("click",()=>setTimeout(focusCurrentMonthInYear,0));
   }
 });
