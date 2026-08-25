@@ -467,3 +467,5 @@ body.installed-app .month-large .weekdays div{padding:3px 1px;font-size:.64rem}b
   line-height:1;
   box-shadow:0 0 0 3px rgba(220,35,35,.10);
 }
+
+.ios-final-img{display:block;width:100%;max-height:310px;object-fit:contain;object-position:top center;margin-top:9px;border-radius:15px;background:#f4f5f7}
