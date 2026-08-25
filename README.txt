@@ -8,3 +8,5 @@ Jahresansicht:
 - Der heutige Tag bleibt gelb markiert.
 
 Alle übrigen Funktionen aus V14 bleiben erhalten.
+
+V18: Schritt 4 – „Hinzufügen“ jetzt mit einheitlicher roter, abgerundeter Umrandung statt Kreis markiert.
