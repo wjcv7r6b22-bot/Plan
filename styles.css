@@ -453,7 +453,7 @@ body.installed-app .month-large .weekdays div{padding:3px 1px;font-size:.64rem}b
 /* ===== Klickziele iPhone-Installation ===== */
 .ios-menu-row{
   position:relative;
-  border:8px solid #dc2323 !important;
+  border:5px solid #dc2323 !important;
   border-radius:18px !important;
   box-shadow:0 0 0 3px rgba(220,35,35,.10);
 }
@@ -462,7 +462,7 @@ body.installed-app .month-large .weekdays div{padding:3px 1px;font-size:.64rem}b
   align-items:center;
   justify-content:center;
   padding:6px 10px;
-  border:8px solid #dc2323;
+  border:5px solid #dc2323;
   border-radius:999px;
   line-height:1;
   box-shadow:0 0 0 3px rgba(220,35,35,.10);
