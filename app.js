@@ -354,7 +354,7 @@ function shareCanvasForMonth(year, month, group){
   ctx.fillStyle="#7b858f";
   ctx.textAlign="center";
   ctx.font="24px system-ui,-apple-system,sans-serif";
-  
+
   // Kompakte Erklärung für Empfänger des verschickten Plans
   const legendY=H-60;
   ctx.fillStyle="#f4f7fa";
