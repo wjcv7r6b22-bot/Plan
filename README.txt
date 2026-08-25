@@ -12,3 +12,5 @@ Alle übrigen Funktionen aus V14 bleiben erhalten.
 V18: Schritt 4 – „Hinzufügen“ jetzt mit einheitlicher roter, abgerundeter Umrandung statt Kreis markiert.
 
 V19: Rote Markierung bei Schritt 4 exakt und gleichmäßig um den blauen „Hinzufügen“-Button gelegt.
+
+V20: Schritt 4 – rote Markierung jetzt eng und gleichmäßig direkt im weißen Zwischenraum unmittelbar außerhalb des blauen „Hinzufügen“-Buttons.
