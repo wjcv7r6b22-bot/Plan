@@ -450,7 +450,7 @@ body.installed-app .month-large .weekdays div{padding:3px 1px;font-size:.64rem}b
   box-shadow:inset 0 0 0 2px #e0b93c !important;
 }
 
-/* ===== V16: Klickziele iPhone-Installation ===== */
+/* ===== Klickziele iPhone-Installation ===== */
 .ios-menu-row{
   position:relative;
   border:3px solid #dc2323 !important;
